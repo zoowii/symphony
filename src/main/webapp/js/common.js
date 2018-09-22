@@ -30,7 +30,7 @@
  */
 var Util = {
   /**
-   * 按需加载 MathJax 及 flow
+   * \u6309\u9700\u52a0\u8f7d MathJax \u53ca flow
    * @returns {undefined}
    */
   parseMarkdown: function () {
@@ -104,14 +104,14 @@ var Util = {
     }
   },
   /**
-   * @description 前置快捷键
+   * @description \u524d\u7f6e\u5feb\u6377\u952e
    */
   prevKey: undefined,
   /**
-   * 粘贴
-   * @param {jQuery} $click 点击触发复制事件的元素
-   * @param {jQuery} $text 包含复制内容的元素
-   * @param {function} cb 复制成功的回调函数
+   * \u7c98\u8d34
+   * @param {jQuery} $click \u70b9\u51fb\u89e6\u53d1\u590d\u5236\u4e8b\u4ef6\u7684\u5143\u7d20
+   * @param {jQuery} $text \u5305\u542b\u590d\u5236\u5185\u5bb9\u7684\u5143\u7d20
+   * @param {function} cb \u590d\u5236\u6210\u529f\u7684\u56de\u8c03\u51fd\u6570
    */
   clipboard: function ($click, $text, cb) {
     $click.click(function (event) {
@@ -135,7 +135,7 @@ var Util = {
     });
   },
   /**
-   * @description 关闭 alert
+   * @description \u5173\u95ed alert
    */
   closeAlert: function () {
     var $alert = $('#alertDialogPanel');
@@ -144,7 +144,7 @@ var Util = {
   },
   /**
    * @description alert
-   * @param {String} content alert 内容
+   * @param {String} content alert \u5185\u5bb9
    */
   alert: function (content) {
     var alertHTML = '',
@@ -165,8 +165,8 @@ var Util = {
     }).show().focus();
   },
   /**
-   * @description 标记指定类型的消息通知为已读状态.
-   * @param {String} type 指定类型："commented"/"at"/"following"/"reply"
+   * @description \u6807\u8bb0\u6307\u5b9a\u7c7b\u578b\u7684\u6d88\u606f\u901a\u77e5\u4e3a\u5df2\u8bfb\u72b6\u6001.
+   * @param {String} type \u6307\u5b9a\u7c7b\u578b\uff1a"commented"/"at"/"following"/"reply"
    * @param {Bom} it
    */
   makeNotificationRead: function (type, it) {
@@ -193,7 +193,7 @@ var Util = {
     return false;
   },
   /**
-   * 初始化全局快捷键
+   * \u521d\u59cb\u5316\u5168\u5c40\u5feb\u6377\u952e
    * @returns {undefined}
    */
   _initCommonHotKey: function () {
@@ -203,7 +203,7 @@ var Util = {
 
     /**
      * go to focus
-     * @param {string} type 滚动方式: 'top'/'bottom'/'up'/'down'.
+     * @param {string} type \u6eda\u52a8\u65b9\u5f0f: 'top'/'bottom'/'up'/'down'.
      * @returns {undefined}
      */
     var goFocus = function (type) {
@@ -226,7 +226,7 @@ var Util = {
       }
     };
 
-    // c 新建帖子
+    // c \u65b0\u5efa\u5e16\u5b50
     if ($('#articleTitle').length === 0) {
       $(document).bind('keydown', 'c', function assets (event) {
         if (Util.prevKey) {
@@ -245,51 +245,51 @@ var Util = {
       }, 1000);
       return false;
     }).bind('keyup', 's', function () {
-      // s 定位到搜索框
+      // s \u5b9a\u4f4d\u5230\u641c\u7d22\u6846
       $('#search').focus();
       return false;
     }).bind('keyup', 't', function () {
-      // t 回到顶部
+      // t \u56de\u5230\u9876\u90e8
       if (Util.prevKey === undefined) {
         Util.goTop();
       }
       return false;
     }).bind('keyup', 'n', function (event) {
-      // g n 跳转到通知页面
+      // g n \u8df3\u8f6c\u5230\u901a\u77e5\u9875\u9762
       if (Util.prevKey === 'g') {
         window.location = Label.servePath + '/notifications';
       }
       return false;
     }).bind('keyup', 'h', function (event) {
-      // g n 跳转到通知页面
+      // g n \u8df3\u8f6c\u5230\u901a\u77e5\u9875\u9762
       if (Util.prevKey === 'g') {
         window.location = Label.servePath + '/hot';
       }
       return false;
     }).bind('keyup', 'i', function (event) {
-      // g i 跳转到首页
+      // g i \u8df3\u8f6c\u5230\u9996\u9875
       if (Util.prevKey === 'g') {
         window.location = Label.servePath;
       }
       return false;
     }).bind('keyup', 'r', function (event) {
-      // g r 跳转到最新页面
+      // g r \u8df3\u8f6c\u5230\u6700\u65b0\u9875\u9762
       if (Util.prevKey === 'g') {
         window.location = Label.servePath + '/recent';
       }
       return false;
     }).bind('keyup', 'p', function (event) {
-      // g p 跳转到优选页面
+      // g p \u8df3\u8f6c\u5230\u4f18\u9009\u9875\u9762
       if (Util.prevKey === 'g') {
         window.location = Label.servePath + '/perfect';
       }
       return false;
     }).bind('keyup', 'Shift+/', function (event) {
-      // shift/⇧ ? 新窗口打开键盘快捷键说明文档
+      // shift/\u21e7 ? \u65b0\u7a97\u53e3\u6253\u5f00\u952e\u76d8\u5feb\u6377\u952e\u8bf4\u660e\u6587\u6863
       window.open('https://hacpai.com/article/1474030007391');
       return false;
     }).bind('keyup', 'j', function (event) {
-      // j 移动到下一项
+      // j \u79fb\u52a8\u5230\u4e0b\u4e00\u9879
       var query = '.content .list:last > ul > ';
       if ($('#comments').length === 1) {
         query = '#comments .list > ul > ';
@@ -304,7 +304,7 @@ var Util = {
       goFocus('down');
       return false;
     }).bind('keyup', 'k', function (event) {
-      // k 移动到上一项
+      // k \u79fb\u52a8\u5230\u4e0a\u4e00\u9879
       var query = '.content .list:last > ul > ';
       if ($('#comments').length === 1) {
         query = '#comments .list > ul > ';
@@ -319,7 +319,7 @@ var Util = {
       goFocus('up');
       return false;
     }).bind('keyup', 'f', function (event) {
-      // f 移动到第一项
+      // f \u79fb\u52a8\u5230\u7b2c\u4e00\u9879
       var query = '.content .list:last > ul > ';
       if ($('#comments').length === 1) {
         query = '#comments .list > ul > ';
@@ -329,7 +329,7 @@ var Util = {
       goFocus('top');
       return false;
     }).bind('keyup', 'l', function (event) {
-      // l 移动到最后一项
+      // l \u79fb\u52a8\u5230\u6700\u540e\u4e00\u9879
       if (Util.prevKey) {
         return false;
       }
@@ -342,7 +342,7 @@ var Util = {
       goFocus('bottom');
       return false;
     }).bind('keyup', 'o', function (event) {
-      // o/enter 打开选中项
+      // o/enter \u6253\u5f00\u9009\u4e2d\u9879
       if ($('#comments').length === 1) {
         return false;
       }
@@ -358,7 +358,7 @@ var Util = {
       }
       return false;
     }).bind('keyup', 'return', function (event) {
-      // o/enter 打开选中项
+      // o/enter \u6253\u5f00\u9009\u4e2d\u9879
       if ($('#comments').length === 1) {
         return false;
       }
@@ -376,8 +376,8 @@ var Util = {
     });
   },
   /**
-   * 消息通知
-   * @param {type} count 现有消息数目
+   * \u6d88\u606f\u901a\u77e5
+   * @param {type} count \u73b0\u6709\u6d88\u606f\u6570\u76ee
    * @returns {Boolean}
    */
   notifyMsg: function (count) {
@@ -416,7 +416,7 @@ var Util = {
     // want to be respectful there is no need to bother them any more.
   },
   /**
-   * 粘贴中包含图片和文案时，需要处理为 markdown 语法
+   * \u7c98\u8d34\u4e2d\u5305\u542b\u56fe\u7247\u548c\u6587\u6848\u65f6\uff0c\u9700\u8981\u5904\u7406\u4e3a markdown \u8bed\u6cd5
    * @param {object} clipboardData
    * @param {object} cm
    * @returns {String}
@@ -478,7 +478,7 @@ var Util = {
     }
   },
   /**
-   * @description 根据 url search 获取值
+   * @description \u6839\u636e url search \u83b7\u53d6\u503c
    * @param {type} name
    * @returns {String}
    */
@@ -490,9 +490,9 @@ var Util = {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   },
   /**
-   * 通过 UA 获取设备
+   * \u901a\u8fc7 UA \u83b7\u53d6\u8bbe\u5907
    * @param {String} ua user agent
-   * @returns {String} 设备
+   * @returns {String} \u8bbe\u5907
    */
   getDeviceByUa: function (ua) {
     $.ua.set(ua);
@@ -504,7 +504,7 @@ var Util = {
     return name;
   },
   /**
-   * 初始化 algolia 搜索
+   * \u521d\u59cb\u5316 algolia \u641c\u7d22
    * @returns {undefined}
    */
   initSearch: function (algoliaAppId, algoliaSearchKey, algoliaIndex) {
@@ -586,7 +586,7 @@ var Util = {
           }
           emojString = emojString + ',' + allEmoj;
         }
-        emojString = emojString.replace(/,+/g, ','); // 全局替换重复的逗号
+        emojString = emojString.replace(/,+/g, ','); // \u5168\u5c40\u66ff\u6362\u91cd\u590d\u7684\u9017\u53f7
 
         var emojis = emojString.split(/,/);
         var emojiAutocompleteHints = [];
@@ -678,7 +678,7 @@ var Util = {
             if ('comment' === cm['for'] && ('@participants'.indexOf(tok.string) > -1)) {
               autocompleteHints.push({
                 displayText: "<span style='font-size: 1rem;line-height:22px'>"
-                + "<img style='width: 1rem;height: 1rem;margin:3px 0;float:left' src='/images/user-thumbnail.png'> @参与者</span>",
+                + "<img style='width: 1rem;height: 1rem;margin:3px 0;float:left' src='/images/user-thumbnail.png'> @\u53c2\u4e0e\u8005</span>",
                 text: "participants "
               });
             }
@@ -760,7 +760,7 @@ var Util = {
               cm.replaceRange('', CodeMirror.Pos(cursor.line, cursor.ch - Label.uploadingLabel.length), cursor);
             }
           });
-        } else { // 说明没有使用七牛，而是使用本地
+        } else { // \u8bf4\u660e\u6ca1\u6709\u4f7f\u7528\u4e03\u725b\uff0c\u800c\u662f\u4f7f\u7528\u672c\u5730
           var fd = new FormData();
           fd.append('file', blob);
           fd.append('key', key);
@@ -791,8 +791,8 @@ var Util = {
     };
   },
   /**
-   * @description 设置当前登录用户的未读提醒计数.
-   * @param {Boolean} isSendMsg 是否发送消息
+   * @description \u8bbe\u7f6e\u5f53\u524d\u767b\u5f55\u7528\u6237\u7684\u672a\u8bfb\u63d0\u9192\u8ba1\u6570.
+   * @param {Boolean} isSendMsg \u662f\u5426\u53d1\u9001\u6d88\u606f
    */
   setUnreadNotificationCount: function (isSendMsg) {
     $.ajax({
@@ -800,14 +800,14 @@ var Util = {
       type: "GET",
       cache: false,
       success: function (result, textStatus) {
-        // 生成消息的 li 标签
+        // \u751f\u6210\u6d88\u606f\u7684 li \u6807\u7b7e
         var genLiHTML = function (data) {
           var notiHTML = '',
             markReadHTML = '<span onclick="Util.makeNotificationRead(\'${markReadType}\');return false;" aria-label="'
               + Label.makeAsReadLabel + '" class="fn-right tooltipped tooltipped-nw">'
               + '<svg><use xlink:href="#check"></use></svg>' + '</span>';
 
-          // 收到的回帖 unreadCommentedNotificationCnt
+          // \u6536\u5230\u7684\u56de\u5e16 unreadCommentedNotificationCnt
           if (data.unreadCommentedNotificationCnt > 0) {
             notiHTML += '<li><a href="' + Label.servePath + '/notifications/commented">'
               + Label.notificationCommentedLabel
@@ -816,7 +816,7 @@ var Util = {
               + '</a></li>';
           }
 
-          // 收到的回复 unreadReplyNotificationCnt
+          // \u6536\u5230\u7684\u56de\u590d unreadReplyNotificationCnt
           if (data.unreadReplyNotificationCnt > 0) {
             notiHTML += '<li><a href="' + Label.servePath + '/notifications/reply">' + Label.notificationReplyLabel +
               ' <span class="count">' + data.unreadReplyNotificationCnt + '</span>'
@@ -824,7 +824,7 @@ var Util = {
               + '</a></li>';
           }
 
-          // @ 我的 unreadAtNotificationCnt
+          // @ \u6211\u7684 unreadAtNotificationCnt
           if (data.unreadAtNotificationCnt > 0) {
             notiHTML += '<li><a href="' + Label.servePath + '/notifications/at">' + Label.notificationAtLabel +
               ' <span class="count">' + data.unreadAtNotificationCnt + '</span>'
@@ -832,7 +832,7 @@ var Util = {
               + '</a></li>';
           }
 
-          // 我关注的 unreadFollowingNotificationCnt
+          // \u6211\u5173\u6ce8\u7684 unreadFollowingNotificationCnt
           if (data.unreadFollowingNotificationCnt > 0) {
             notiHTML += '<li><a href="' + Label.servePath + '/notifications/following">' + Label.notificationFollowingLabel +
               ' <span class="count">' + data.unreadFollowingNotificationCnt + '</span>'
@@ -840,28 +840,28 @@ var Util = {
               + '</a></li>';
           }
 
-          // 积分 unreadPointNotificationCnt
+          // \u79ef\u5206 unreadPointNotificationCnt
           if (data.unreadPointNotificationCnt > 0) {
             notiHTML += '<li><a href="' + Label.servePath + '/notifications/point">' + Label.pointLabel +
               ' <span class="count">' + data.unreadPointNotificationCnt + '</span>'
               + '</a></li>';
           }
 
-          // 同城 unreadBroadcastNotificationCnt
+          // \u540c\u57ce unreadBroadcastNotificationCnt
           if (data.unreadBroadcastNotificationCnt > 0) {
             notiHTML += '<li><a href="' + Label.servePath + '/notifications/broadcast">' + Label.sameCityLabel +
               ' <span class="count">' + data.unreadBroadcastNotificationCnt + '</span>'
               + '</a></li>';
           }
 
-          // 系统 unreadSysAnnounceNotificationCnt
+          // \u7cfb\u7edf unreadSysAnnounceNotificationCnt
           if (data.unreadSysAnnounceNotificationCnt > 0) {
             notiHTML += '<li><a href="' + Label.servePath + '/notifications/sys-announce">' + Label.systemLabel +
               ' <span class="count">' + data.unreadSysAnnounceNotificationCnt + '</span>'
               + '</a></li>';
           }
 
-          // 新关注者 unreadNewFollowerNotificationCnt
+          // \u65b0\u5173\u6ce8\u8005 unreadNewFollowerNotificationCnt
           if (data.unreadNewFollowerNotificationCnt > 0) {
             notiHTML += '<li><a href="' + Label.servePath + '/member/' + Label.currentUserName + '/followers">' +
               Label.newFollowerLabel + ' <span class="count">' + data.unreadNewFollowerNotificationCnt + '</span>'
@@ -938,11 +938,11 @@ var Util = {
     });
   },
   /**
-   * @description 关注
-   * @param {BOM} it 触发事件的元素
-   * @param {String} id 关注 id
-   * @param {String} type 关注的类型
-   * @param {String} index 为数字时表示关注数，String 时表示来源
+   * @description \u5173\u6ce8
+   * @param {BOM} it \u89e6\u53d1\u4e8b\u4ef6\u7684\u5143\u7d20
+   * @param {String} id \u5173\u6ce8 id
+   * @param {String} type \u5173\u6ce8\u7684\u7c7b\u578b
+   * @param {String} index \u4e3a\u6570\u5b57\u65f6\u8868\u793a\u5173\u6ce8\u6570\uff0cString \u65f6\u8868\u793a\u6765\u6e90
    */
   follow: function (it, id, type, index) {
     if (!Label.isLoggedIn) {
@@ -986,11 +986,11 @@ var Util = {
     });
   },
   /**
-   * @description 取消关注
-   * @param {BOM} it 触发事件的元素
-   * @param {String} id 关注 id
-   * @param {String} type 取消关注的类型
-   * @param {String} index 为数字时表示关注数，String 时表示来源
+   * @description \u53d6\u6d88\u5173\u6ce8
+   * @param {BOM} it \u89e6\u53d1\u4e8b\u4ef6\u7684\u5143\u7d20
+   * @param {String} id \u5173\u6ce8 id
+   * @param {String} type \u53d6\u6d88\u5173\u6ce8\u7684\u7c7b\u578b
+   * @param {String} index \u4e3a\u6570\u5b57\u65f6\u8868\u793a\u5173\u6ce8\u6570\uff0cString \u65f6\u8868\u793a\u6765\u6e90
    */
   unfollow: function (it, id, type, index) {
     if ($(it).hasClass("disabled")) {
@@ -1030,13 +1030,13 @@ var Util = {
     });
   },
   /**
-   * @description 回到顶部
+   * @description \u56de\u5230\u9876\u90e8
    */
   goTop: function () {
     $('html, body').animate({scrollTop: 0}, 800);
   },
   /**
-   * @description 跳转到登录界面
+   * @description \u8df3\u8f6c\u5230\u767b\u5f55\u754c\u9762
    */
   goLogin: function () {
     if (-1 !== location.href.indexOf("/login")) {
@@ -1057,7 +1057,7 @@ var Util = {
     Util.goLogin();
   },
   /**
-   * @description 跳转到注册页面
+   * @description \u8df3\u8f6c\u5230\u6ce8\u518c\u9875\u9762
    */
   goRegister: function () {
     if (-1 !== location.href.indexOf("/register")) {
@@ -1070,7 +1070,7 @@ var Util = {
     window.location.href = Label.servePath + "/register?goto=" + encodeURIComponent(gotoURL);
   },
   /**
-   * @description 禁止 IE7 以下浏览器访问
+   * @description \u7981\u6b62 IE7 \u4ee5\u4e0b\u6d4f\u89c8\u5668\u8bbf\u95ee
    */
   _kill: function () {
     if ($.ua.browser.name === 'IE' && parseInt($.ua.browser.version) < 10) {
@@ -1092,7 +1092,7 @@ var Util = {
     }
   },
   /**
-   * 每日活跃样式
+   * \u6bcf\u65e5\u6d3b\u8dc3\u6837\u5f0f
    * @returns {undefined}
    */
   _initActivity: function () {
@@ -1138,16 +1138,16 @@ var Util = {
     });
   },
   /**
-   * @description 初识化前台页面
+   * @description \u521d\u8bc6\u5316\u524d\u53f0\u9875\u9762
    */
   init: function (isLoggedIn) {
-    //禁止 IE7 以下浏览器访问
+    //\u7981\u6b62 IE7 \u4ee5\u4e0b\u6d4f\u89c8\u5668\u8bbf\u95ee
     this._kill();
-    // 导航
+    // \u5bfc\u822a
     this._initNav();
-    // 每日活跃
+    // \u6bcf\u65e5\u6d3b\u8dc3
     this._initActivity();
-    // 移动端分页
+    // \u79fb\u52a8\u7aef\u5206\u9875
     if ($('.pagination select').length === 1) {
       $('.pagination select').change(function () {
         var url = $(this).data('url') + '?p=' + $(this).val();
@@ -1175,7 +1175,7 @@ var Util = {
 
     Util.parseMarkdown();
 
-    if (isLoggedIn) { // 如果登录了
+    if (isLoggedIn) { // \u5982\u679c\u767b\u5f55\u4e86
       if (!window.localStorage.hadNotificate) {
         window.localStorage.hadNotificate = 'false';
       }
@@ -1185,14 +1185,14 @@ var Util = {
 
     this._initCommonHotKey();
     console.log(
-      '%cHacPai%c\n  平等、自由、奔放\n  Feel easy about trust.\n\n  b3log.org & hacpai.com\n  Copyright © 2012-' +
+      '%cHacPai%c\n  \u5e73\u7b49\u3001\u81ea\u7531\u3001\u5954\u653e\n  Feel easy about trust.\n\n  b3log.org & hacpai.com\n  Copyright \u00a9 2012-' +
       Label.year,
       'font-size:96px;color:#3b3e43', 'font-size:12px;color:rgba(0,0,0,0.38);');
     if (isLoggedIn) {
       return false;
     }
 
-    // 点击空白影藏登录框
+    // \u70b9\u51fb\u7a7a\u767d\u5f71\u85cf\u767b\u5f55\u6846
     $('body').click(function (event) {
       if ($(event.target).closest('.nav .form').length === 0) {
         $('.nav .form').hide();
@@ -1200,7 +1200,7 @@ var Util = {
     });
   },
   /**
-   * @description 用户状态 channel.
+   * @description \u7528\u6237\u72b6\u6001 channel.
    * @static
    */
   initUserChannel: function (channelServer) {
@@ -1232,7 +1232,7 @@ var Util = {
     };
   },
   /**
-   * @description 设置导航状态
+   * @description \u8bbe\u7f6e\u5bfc\u822a\u72b6\u6001
    */
   _initNav: function () {
     var href = location.href;
@@ -1240,10 +1240,10 @@ var Util = {
       if (href.indexOf($(this).attr("href")) === 0) {
         $(this).addClass("current");
       } else if (location.pathname === "/register") {
-        // 注册没有使用 href，对其进行特殊处理
+        // \u6ce8\u518c\u6ca1\u6709\u4f7f\u7528 href\uff0c\u5bf9\u5176\u8fdb\u884c\u7279\u6b8a\u5904\u7406
         $(".user-nav a:last").addClass("current");
       } else if (location.pathname === "/login") {
-        // 登录没有使用 href，对其进行特殊处理
+        // \u767b\u5f55\u6ca1\u6709\u4f7f\u7528 href\uff0c\u5bf9\u5176\u8fdb\u884c\u7279\u6b8a\u5904\u7406
         $(".user-nav a:first").addClass("current");
       } else if (href.indexOf(Label.servePath + '/settings') === 0 ||
         href.indexOf($("#aPersonListPanel").data('url')) === 0) {
@@ -1262,7 +1262,7 @@ var Util = {
       }
     });
 
-    // 导航过长处理
+    // \u5bfc\u822a\u8fc7\u957f\u5904\u7406
     if ($('.nav-tabs a:last').length === 1 && $('.nav-tabs a:last')[0].offsetTop > 0) {
       $('.nav-tabs').mouseover(function () {
         $('.user-nav').hide();
@@ -1272,7 +1272,7 @@ var Util = {
     }
   },
   /**
-   * @description 登出
+   * @description \u767b\u51fa
    */
   logout: function () {
     if (window.localStorage) {
@@ -1283,23 +1283,23 @@ var Util = {
     window.location.href = Label.servePath + '/logout?goto=' + Label.servePath;
   },
   /**
-   * @description 获取字符串开始位置
-   * @param {String} string 需要匹配的字符串
-   * @param {String} prefix 匹配字符
-   * @return {Integer} 以匹配字符开头的位置
+   * @description \u83b7\u53d6\u5b57\u7b26\u4e32\u5f00\u59cb\u4f4d\u7f6e
+   * @param {String} string \u9700\u8981\u5339\u914d\u7684\u5b57\u7b26\u4e32
+   * @param {String} prefix \u5339\u914d\u5b57\u7b26
+   * @return {Integer} \u4ee5\u5339\u914d\u5b57\u7b26\u5f00\u5934\u7684\u4f4d\u7f6e
    */
   startsWith: function (string, prefix) {
     return (string.match("^" + prefix) == prefix);
   },
   /**
-   * @description 文件上传
-   * @param {Obj} obj  文件上传参数
-   * @param {String} obj.id 上传组件 id
-   * @param {jQuery} obj.pasteZone 粘贴区域
-   * @param {String} obj.qiniuUploadToken 七牛 Token，如果这个 token 是空，说明是上传本地服务器
-   * @param {Obj} obj.editor 编辑器对象
-   * @param {Obj} obj.uploadingLabel 上传中标签
-   * @param {Strng} obj.qiniuDomain 七牛 Domain
+   * @description \u6587\u4ef6\u4e0a\u4f20
+   * @param {Obj} obj  \u6587\u4ef6\u4e0a\u4f20\u53c2\u6570
+   * @param {String} obj.id \u4e0a\u4f20\u7ec4\u4ef6 id
+   * @param {jQuery} obj.pasteZone \u7c98\u8d34\u533a\u57df
+   * @param {String} obj.qiniuUploadToken \u4e03\u725b Token\uff0c\u5982\u679c\u8fd9\u4e2a token \u662f\u7a7a\uff0c\u8bf4\u660e\u662f\u4e0a\u4f20\u672c\u5730\u670d\u52a1\u5668
+   * @param {Obj} obj.editor \u7f16\u8f91\u5668\u5bf9\u8c61
+   * @param {Obj} obj.uploadingLabel \u4e0a\u4f20\u4e2d\u6807\u7b7e
+   * @param {Strng} obj.qiniuDomain \u4e03\u725b Domain
    */
   uploadFile: function (obj) {
     var filename = "", fileIndex = 0,
@@ -1307,7 +1307,7 @@ var Util = {
     var ext = "";
     var isImg = false;
 
-    if ("" === obj.qiniuUploadToken) { // 说明没有使用七牛，而是使用本地
+    if ("" === obj.qiniuUploadToken) { // \u8bf4\u660e\u6ca1\u6709\u4f7f\u7528\u4e03\u725b\uff0c\u800c\u662f\u4f7f\u7528\u672c\u5730
       $('#' + obj.id).fileupload({
         multipart: true,
         pasteZone: obj.pasteZone,
@@ -1421,7 +1421,7 @@ var Util = {
         if (data.files[0].name) {
           var processName = data.files[0].name.match(/[a-zA-Z0-9.]/g).join('');
           filename = getUUID() + '-' + processName;
-          // 文件名称全为中文时，移除 ‘-’
+          // \u6587\u4ef6\u540d\u79f0\u5168\u4e3a\u4e2d\u6587\u65f6\uff0c\u79fb\u9664 \u2018-\u2019
           if (processName.split('.')[0] === '') {
             filename = getUUID() + processName;
           }
@@ -1536,25 +1536,25 @@ var Util = {
         var $i;
         click_cnt++;
         if (click_cnt == 10) {
-          $i = $("<b></b>").text("OωO");
+          $i = $("<b></b>").text("O\u03c9O");
         } else if (click_cnt === 20) {
-          $i = $("<b></b>").text("(๑•́ ∀ •̀๑)");
+          $i = $("<b></b>").text("(\u0e51\u2022\u0301 \u2200 \u2022\u0300\u0e51)");
         } else if (click_cnt === 30) {
-          $i = $("<b></b>").text("(๑•́ ₃ •̀๑)");
+          $i = $("<b></b>").text("(\u0e51\u2022\u0301 \u2083 \u2022\u0300\u0e51)");
         } else if (click_cnt === 40) {
-          $i = $("<b></b>").text("(๑•̀_•́๑)");
+          $i = $("<b></b>").text("(\u0e51\u2022\u0300_\u2022\u0301\u0e51)");
         } else if (click_cnt === 50) {
-          $i = $("<b></b>").text("（￣へ￣）");
+          $i = $("<b></b>").text("\uff08\uffe3\u3078\uffe3\uff09");
         } else if (click_cnt === 60) {
-          $i = $("<b></b>").text("(╯°口°)╯(┴—┴");
+          $i = $("<b></b>").text("(\u256f\u00b0\u53e3\u00b0)\u256f(\u2534\u2014\u2534");
         } else if (click_cnt === 70) {
-          $i = $("<b></b>").text("૮( ᵒ̌皿ᵒ̌ )ა");
+          $i = $("<b></b>").text("\u0aee( \u1d52\u030c\u76bf\u1d52\u030c )\u10d0");
         } else if (click_cnt === 80) {
-          $i = $("<b></b>").text("╮(｡>口<｡)╭");
+          $i = $("<b></b>").text("\u256e(\uff61>\u53e3<\uff61)\u256d");
         } else if (click_cnt === 90) {
-          $i = $("<b></b>").text("( ง ᵒ̌皿ᵒ̌)ง⁼³₌₃");
+          $i = $("<b></b>").text("( \u0e07 \u1d52\u030c\u76bf\u1d52\u030c)\u0e07\u207c\u00b3\u208c\u2083");
         } else if (click_cnt >= 100 && click_cnt <= 105) {
-          $i = $("<b></b>").text("(ꐦ°᷄д°᷅)");
+          $i = $("<b></b>").text("(\ua426\u00b0\u1dc4\u0434\u00b0\u1dc5)");
         } else {
           $i = $('<svg><use xlink:href="#heart"></use></svg>');
           n = Math.round(Math.random() * 14 + 6);
@@ -1584,14 +1584,14 @@ var Util = {
   }
 };
 /**
- * @description 数据验证
+ * @description \u6570\u636e\u9a8c\u8bc1
  * @static
  */
 var Validate = {
   /**
-   * @description 提交时对数据进行统一验证。
-   * @param {array} data 验证数据
-   * @returns 验证通过返回 true，否则为 false。
+   * @description \u63d0\u4ea4\u65f6\u5bf9\u6570\u636e\u8fdb\u884c\u7edf\u4e00\u9a8c\u8bc1\u3002
+   * @param {array} data \u9a8c\u8bc1\u6570\u636e
+   * @returns \u9a8c\u8bc1\u901a\u8fc7\u8fd4\u56de true\uff0c\u5426\u5219\u4e3a false\u3002
    */
   goValidate: function (obj) {
     var tipHTML = '<ul>';
@@ -1612,13 +1612,13 @@ var Validate = {
     }
   },
   /**
-   * @description 数据验证。
-   * @param {object} data 验证数据
-   * @param {string} data.type 验证类型
-   * @param {object} data.target 验证对象
-   * @param {number} [data.min] 最小值
-   * @param {number} [data.max] 最大值
-   * @returns 验证通过返回 true，否则为 false。
+   * @description \u6570\u636e\u9a8c\u8bc1\u3002
+   * @param {object} data \u9a8c\u8bc1\u6570\u636e
+   * @param {string} data.type \u9a8c\u8bc1\u7c7b\u578b
+   * @param {object} data.target \u9a8c\u8bc1\u5bf9\u8c61
+   * @param {number} [data.min] \u6700\u5c0f\u503c
+   * @param {number} [data.max] \u6700\u5927\u503c
+   * @returns \u9a8c\u8bc1\u901a\u8fc7\u8fd4\u56de true\uff0c\u5426\u5219\u4e3a false\u3002
    */
   validate: function (data) {
     var isValidate = true,
@@ -1681,12 +1681,12 @@ var Validate = {
   }
 };
 /**
- * @description 全局变量
+ * @description \u5168\u5c40\u53d8\u91cf
  */
 var Label = {};
 
 
-// 开始 - 判断文件类型
+// \u5f00\u59cb - \u5224\u65ad\u6587\u4ef6\u7c7b\u578b
 var pngMagic = [
   0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a
 ];
@@ -1825,7 +1825,7 @@ function isWav (data1, data2) {
   return arrayEquals(data1, wavMagic1) && arrayEquals(data2, wavMagic2);
 }
 
-// 结束 - 判断文件类型
+// \u7ed3\u675f - \u5224\u65ad\u6587\u4ef6\u7c7b\u578b
 function getUUID () {
   var d = new Date().getTime();
 
@@ -1849,7 +1849,7 @@ var Audio = {
   wavFileBlob: null,
   recorderObj: null,
   /**
-   * @description 初识化音频
+   * @description \u521d\u8bc6\u5316\u97f3\u9891
    */
   init: function (succCB) {
     var detectGetUserMedia = new BrowserGetUserMediaDetection();
@@ -1887,7 +1887,7 @@ var Audio = {
     //Get user media success callback function:
     function success (e) {
       var BUFFER_SIZE = 2048;
-      var RECORDING_MODE = PredefinedRecordingModes.MONO_5_KHZ; // 单声道 5kHz 最低的采样率
+      var RECORDING_MODE = PredefinedRecordingModes.MONO_5_KHZ; // \u5355\u58f0\u9053 5kHz \u6700\u4f4e\u7684\u91c7\u6837\u7387
       var SAMPLE_RATE = RECORDING_MODE.getSampleRate();
       var OUTPUT_CHANNEL_COUNT = RECORDING_MODE.getChannelCount();
 
@@ -1922,13 +1922,13 @@ var Audio = {
     }
   },
   /**
-   * @description 开始录音
+   * @description \u5f00\u59cb\u5f55\u97f3
    */
   handleStartRecording: function () {
     Audio.recorderObj.startRecordingNewWavFile();
   },
   /**
-   * @description 结束录音
+   * @description \u7ed3\u675f\u5f55\u97f3
    */
   handleStopRecording: function () {
     Audio.recorderObj.stopRecording();

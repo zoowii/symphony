@@ -30,7 +30,7 @@
 var Comment = {
   editor: undefined,
   /**
-   * 举报
+   * \u4e3e\u62a5
    * @param it
    */
   report: function (it) {
@@ -59,7 +59,7 @@ var Comment = {
     })
   },
   /**
-   * 采纳评论
+   * \u91c7\u7eb3\u8bc4\u8bba
    * @param tip
    * @param id
    */
@@ -87,8 +87,8 @@ var Comment = {
     })
   },
   /**
-   * 删除评论
-   * @param {integer} id 评论 id
+   * \u5220\u9664\u8bc4\u8bba
+   * @param {integer} id \u8bc4\u8bba id
    */
   remove: function (id) {
     if (!confirm(Label.confirmRemoveLabel)) {
@@ -108,8 +108,8 @@ var Comment = {
     })
   },
   /**
-   * 切换评论排序模式
-   * @param {integer} mode 排序模式：0 传统模式，正序；1 实时模式，倒序
+   * \u5207\u6362\u8bc4\u8bba\u6392\u5e8f\u6a21\u5f0f
+   * @param {integer} mode \u6392\u5e8f\u6a21\u5f0f\uff1a0 \u4f20\u7edf\u6a21\u5f0f\uff0c\u6b63\u5e8f\uff1b1 \u5b9e\u65f6\u6a21\u5f0f\uff0c\u5012\u5e8f
    * @returns {undefined}
    */
   exchangeCmtSort: function (mode) {
@@ -118,8 +118,8 @@ var Comment = {
     window.location.href = window.location.pathname + '?m=' + mode
   },
   /**
-   * 背景渐变
-   * @param {jQuery} $obj 背景渐变对象
+   * \u80cc\u666f\u6e10\u53d8
+   * @param {jQuery} $obj \u80cc\u666f\u6e10\u53d8\u5bf9\u8c61
    * @returns {undefined}
    */
   _bgFade: function ($obj) {
@@ -147,8 +147,8 @@ var Comment = {
     }, 3100)
   },
   /**
-   * 编辑评论
-   * @param {string} id 评论 id
+   * \u7f16\u8f91\u8bc4\u8bba
+   * @param {string} id \u8bc4\u8bba id
    */
   edit: function (id) {
     Comment._toggleReply()
@@ -173,8 +173,8 @@ var Comment = {
       data('commentId', id)
   },
   /**
-   * 跳转到指定的评论处
-   * @param {string} url 跳转的 url
+   * \u8df3\u8f6c\u5230\u6307\u5b9a\u7684\u8bc4\u8bba\u5904
+   * @param {string} url \u8df3\u8f6c\u7684 url
    */
   goComment: function (url) {
     if ($(url.substr(url.length - 14, 14)).length === 0) {
@@ -186,7 +186,7 @@ var Comment = {
     Comment._bgFade($(url.substr(url.length - 14, 14)))
   },
   /**
-   * 设置评论来源
+   * \u8bbe\u7f6e\u8bc4\u8bba\u6765\u6e90
    * @returns {Boolean}
    */
   _setCmtVia: function () {
@@ -199,8 +199,8 @@ var Comment = {
     })
   },
   /**
-   * 回复面板显示／隐藏
-   * @param {function} cb 面板弹出后的回掉函数
+   * \u56de\u590d\u9762\u677f\u663e\u793a\uff0f\u9690\u85cf
+   * @param {function} cb \u9762\u677f\u5f39\u51fa\u540e\u7684\u56de\u6389\u51fd\u6570
    */
   _toggleReply: function (cb) {
     if (!Label.isLoggedIn) {
@@ -233,7 +233,7 @@ var Comment = {
         + $('.article-title').text().replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</a>').
       removeData()
 
-    // 如果 hide 初始化， focus 无效
+    // \u5982\u679c hide \u521d\u59cb\u5316\uff0c focus \u65e0\u6548
     if ($('.editor-panel').css('bottom') !== '0px') {
       $('.editor-panel .wrapper').hide()
       $('.editor-panel').css('bottom', 0)
@@ -246,7 +246,7 @@ var Comment = {
     })
   },
   /**
-   * 初始化帖子
+   * \u521d\u59cb\u5316\u5e16\u5b50
    * @returns {undefined}
    */
   _initHotKey: function () {
@@ -271,40 +271,40 @@ var Comment = {
       return false
     }).bind('keydown', 'r', function assets (event) {
       if (!Util.prevKey) {
-        // r 回复帖子
+        // r \u56de\u590d\u5e16\u5b50
         Comment._toggleReply()
       } else if (Util.prevKey === 'v') {
-        // v r 打赏帖子
+        // v r \u6253\u8d4f\u5e16\u5b50
         $('#articleRewardContent .icon-points').click()
       } else if ($('#comments .list > ul > li.focus').length === 1 &&
         Util.prevKey === 'x') {
-        // x r 回复回帖
+        // x r \u56de\u590d\u56de\u5e16
         $('#comments .list > ul > li.focus .icon-reply').parent().click()
       }
       return false
     }).bind('keyup', 'h', function assets () {
-      // x h 感谢选中回贴
+      // x h \u611f\u8c22\u9009\u4e2d\u56de\u8d34
       if ($('#comments .list > ul > li.focus').length === 1 && Util.prevKey ===
         'x') {
         $('#comments .list > ul > li.focus .icon-heart').parent().click()
       }
       return false
     }).bind('keyup', 't', function assets () {
-      // x t 赞同选中回贴
+      // x t \u8d5e\u540c\u9009\u4e2d\u56de\u8d34
       if ($('#comments .list > ul > li.focus').length === 1 && Util.prevKey ===
         'x') {
         $('#comments .list > ul > li.focus .icon-thumbs-up').parent().click()
       }
       return false
     }).bind('keyup', 'd', function assets () {
-      // x d 反对选中回贴
+      // x d \u53cd\u5bf9\u9009\u4e2d\u56de\u8d34
       if ($('#comments .list > ul > li.focus').length === 1 && Util.prevKey ===
         'x') {
         $('#comments .list > ul > li.focus .icon-thumbs-down').parent().click()
       }
       return false
     }).bind('keyup', 'c', function assets () {
-      // x c 查看选中回复的回贴
+      // x c \u67e5\u770b\u9009\u4e2d\u56de\u590d\u7684\u56de\u8d34
       if ($(
         '#comments .list > ul > li.focus .comment-info .icon-reply-to').length ===
         1 && Util.prevKey === 'x') {
@@ -314,7 +314,7 @@ var Comment = {
       }
       return false
     }).bind('keyup', 'm', function assets () {
-      // x m 查看选中回贴的回复
+      // x\u00a0m\u00a0\u67e5\u770b\u9009\u4e2d\u56de\u8d34\u7684\u56de\u590d
       if ($(
         '#comments .list > ul > li.focus .comment-action > .ft-fade > .fn-pointer').length ===
         1 && Util.prevKey === 'x') {
@@ -323,7 +323,7 @@ var Comment = {
       }
       return false
     }).bind('keyup', 'a', function assets () {
-      // x a 管理员编辑选中的回贴
+      // x a \u7ba1\u7406\u5458\u7f16\u8f91\u9009\u4e2d\u7684\u56de\u8d34
       if (Util.prevKey === 'x' &&
         $('#comments .list > ul > li.focus .icon-setting').parent().length ===
         1) {
@@ -333,49 +333,49 @@ var Comment = {
       }
       return false
     }).bind('keyup', 'm', function assets () {
-      // v m 帖子目录
+      // v m \u5e16\u5b50\u76ee\u5f55
       if (Util.prevKey === 'v') {
         Article.toggleToc()
       }
       return false
     }).bind('keyup', 'h', function assets () {
-      // v h 感谢帖子
+      // v h \u611f\u8c22\u5e16\u5b50
       if (Util.prevKey === 'v') {
         $('#thankArticle').click()
       }
       return false
     }).bind('keyup', 't', function assets () {
-      // v t 赞同帖子
+      // v t \u8d5e\u540c\u5e16\u5b50
       if (Util.prevKey === 'v') {
         $('.article-header .icon-thumbs-up').parent().click()
       }
       return false
     }).bind('keyup', 'd', function assets () {
-      // v d 反对帖子
+      // v d \u53cd\u5bf9\u5e16\u5b50
       if (Util.prevKey === 'v') {
         $('.article-header .icon-thumbs-down').parent().click()
       }
       return false
     }).bind('keyup', 'i', function assets () {
-      // v i 关注帖子
+      // v i \u5173\u6ce8\u5e16\u5b50
       if (Util.prevKey === 'v') {
         $('.article-header .icon-view').parent().click()
       }
       return false
     }).bind('keyup', 'c', function assets () {
-      // v c 收藏帖子
+      // v c \u6536\u85cf\u5e16\u5b50
       if (Util.prevKey === 'v') {
         $('.article-header .icon-star').parent().click()
       }
       return false
     }).bind('keyup', 'l', function assets () {
-      // v l 查看帖子历史
+      // v l \u67e5\u770b\u5e16\u5b50\u5386\u53f2
       if (Util.prevKey === 'v') {
         $('.article-header .icon-history').parent().click()
       }
       return false
     }).bind('keyup', 'e', function assets () {
-      // v e 编辑帖子
+      // v e \u7f16\u8f91\u5e16\u5b50
       if (Util.prevKey === 'v' &&
         $('.article-actions .icon-edit').parent().length === 1) {
         window.location = $('.article-actions .icon-edit').
@@ -384,14 +384,14 @@ var Comment = {
       }
       return false
     }).bind('keyup', 's', function assets () {
-      // v s 置顶帖子
+      // v s \u7f6e\u9876\u5e16\u5b50
       if (Util.prevKey === 'v' &&
         $('.article-actions .icon-chevron-up').length === 1) {
         Article.stick(Label.articleOId)
       }
       return false
     }).bind('keyup', 'a', function assets () {
-      // v a 管理员编辑帖子
+      // v a \u7ba1\u7406\u5458\u7f16\u8f91\u5e16\u5b50
       if (Util.prevKey === 'v' &&
         $('.article-actions .icon-setting').parent().length === 1) {
         window.location = $('.article-actions .icon-setting').
@@ -400,14 +400,14 @@ var Comment = {
       }
       return false
     }).bind('keyup', 'p', function assets () {
-      // v p 跳转到上一篇帖子 prev
+      // v p \u8df3\u8f6c\u5230\u4e0a\u4e00\u7bc7\u5e16\u5b50 prev
       if (Util.prevKey === 'v' && $('.article-header a[rel=prev]').length ===
         1) {
         window.location = $('.article-header a[rel=prev]').attr('href')
       }
       return false
     }).bind('keyup', 'n', function assets () {
-      // v n 跳转到下一篇帖子 next
+      // v n \u8df3\u8f6c\u5230\u4e0b\u4e00\u7bc7\u5e16\u5b50 next
       if (Util.prevKey === 'v' && $('.article-header a[rel=next]').length ===
         1) {
         window.location = $('.article-header a[rel=next]').attr('href')
@@ -416,7 +416,7 @@ var Comment = {
     })
   },
   /**
-   * 评论初始化
+   * \u8bc4\u8bba\u521d\u59cb\u5316
    * @returns {Boolean}
    */
   init: function () {
@@ -582,11 +582,11 @@ var Comment = {
     })
   },
   /**
-   * @description 感谢评论.
-   * @param {String} id 评论 id
-   * @param {String} csrfToken CSRF 令牌
-   * @param {String} tip 确认提示
-   * @param {Integer} 0：公开评论，1：匿名评论
+   * @description \u611f\u8c22\u8bc4\u8bba.
+   * @param {String} id \u8bc4\u8bba id
+   * @param {String} csrfToken CSRF \u4ee4\u724c
+   * @param {String} tip \u786e\u8ba4\u63d0\u793a
+   * @param {Integer} 0\uff1a\u516c\u5f00\u8bc4\u8bba\uff0c1\uff1a\u533f\u540d\u8bc4\u8bba
    */
   thank: function (id, csrfToken, tip, commentAnonymous, it) {
     if (!Label.isLoggedIn) {
@@ -594,7 +594,7 @@ var Comment = {
       return false
     }
 
-    // 匿名回帖不需要进行 confirm
+    // \u533f\u540d\u56de\u5e16\u4e0d\u9700\u8981\u8fdb\u884c confirm
     if (0 === commentAnonymous && !confirm(tip)) {
       return false
     }
@@ -651,8 +651,8 @@ var Comment = {
     })
   },
   /**
-   * @description 展现回帖回复列表
-   * @param {type} id 回帖 id
+   * @description \u5c55\u73b0\u56de\u5e16\u56de\u590d\u5217\u8868
+   * @param {type} id \u56de\u5e16 id
    * @returns {Boolean}
    */
   showReply: function (id, it, className) {
@@ -665,7 +665,7 @@ var Comment = {
       }
     } else {
       if ($(it).find('.icon-chevron-down').length === 0) {
-        // 收起回复
+        // \u6536\u8d77\u56de\u590d
         $(it).
           find('.icon-chevron-up').
           removeClass('icon-chevron-up').
@@ -741,7 +741,7 @@ var Comment = {
             template += '</a>'
           }
 
-          template += '<span class="ft-fade"> • ' + data.timeAgo
+          template += '<span class="ft-fade"> \u2022 ' + data.timeAgo
           if (data.rewardedCnt > 0) {
             template += '<span aria-label="'
               + (data.rewarded ? Label.thankedLabel : Label.thankLabel + ' ' +
@@ -767,7 +767,7 @@ var Comment = {
         $commentReplies.html('<ul>' + template + '</ul>')
         Article.parseLanguage()
 
-        // 如果是回帖的回复需要处理下样式
+        // \u5982\u679c\u662f\u56de\u5e16\u7684\u56de\u590d\u9700\u8981\u5904\u7406\u4e0b\u6837\u5f0f
         $(it).
           find('.icon-chevron-down').
           removeClass('icon-chevron-down').
@@ -784,9 +784,9 @@ var Comment = {
     })
   },
   /**
-   * @description 添加评论
-   * @param {String} id 文章 id
-   * @param {String} csrfToken CSRF 令牌
+   * @description \u6dfb\u52a0\u8bc4\u8bba
+   * @param {String} id \u6587\u7ae0 id
+   * @param {String} csrfToken CSRF \u4ee4\u724c
    * @param {BOM} it targetElement
    */
   add: function (id, csrfToken, it) {
@@ -807,7 +807,7 @@ var Comment = {
       articleId: id,
       commentAnonymous: $('#commentAnonymous').prop('checked'),
       commentVisible: $('#commentVisible').prop('checked'),
-      commentContent: Comment.editor.getValue(), // 实际提交时不去除空格，因为直接贴代码时需要空格
+      commentContent: Comment.editor.getValue(), // \u5b9e\u9645\u63d0\u4ea4\u65f6\u4e0d\u53bb\u9664\u7a7a\u683c\uff0c\u56e0\u4e3a\u76f4\u63a5\u8d34\u4ee3\u7801\u65f6\u9700\u8981\u7a7a\u683c
       userCommentViewMode: Label.userCommentViewMode,
     }
 
@@ -872,9 +872,9 @@ var Comment = {
               emptyContent)
           }
 
-          // 定为到回贴位置
+          // \u5b9a\u4e3a\u5230\u56de\u8d34\u4f4d\u7f6e
           if (Label.userCommentViewMode === 1) {
-            // 实时模式
+            // \u5b9e\u65f6\u6a21\u5f0f
             Comment._bgFade($('#comments'))
           } else {
             Comment._bgFade($('#bottomComment'))
@@ -897,12 +897,12 @@ var Comment = {
     })
   },
   /**
-   * @description 点击回复评论时，把当楼层的用户名带到评论框中
-   * @param {String} userName 用户名称
+   * @description \u70b9\u51fb\u56de\u590d\u8bc4\u8bba\u65f6\uff0c\u628a\u5f53\u697c\u5c42\u7684\u7528\u6237\u540d\u5e26\u5230\u8bc4\u8bba\u6846\u4e2d
+   * @param {String} userName \u7528\u6237\u540d\u79f0
    */
   reply: function (userName, id) {
     Comment._toggleReply(function () {
-      // 回帖在底部，当评论框弹出时会被遮住的解决方案
+      // \u56de\u5e16\u5728\u5e95\u90e8\uff0c\u5f53\u8bc4\u8bba\u6846\u5f39\u51fa\u65f6\u4f1a\u88ab\u906e\u4f4f\u7684\u89e3\u51b3\u65b9\u6848
       if ($(window).height() -
         ($('#' + id)[0].offsetTop - $(window).scrollTop() +
           $('#' + id).outerHeight()) <
@@ -913,7 +913,7 @@ var Comment = {
       }
     })
 
-    // 帖子作者 clone 到编辑器左上角
+    // \u5e16\u5b50\u4f5c\u8005 clone \u5230\u7f16\u8f91\u5668\u5de6\u4e0a\u89d2
     var replyUserHTML = '',
       $avatar = $('#' + id).find('>.fn-flex>div>a').clone()
     if ($avatar.length === 0) {
@@ -953,7 +953,7 @@ var Article = {
         mode: 'circulation',
         music: {
           title: $it.data('title'),
-          author: '<a href="https://hacpai.com/article/1464416402922" target="_blank">音乐分享</a>',
+          author: '<a href="https://hacpai.com/article/1464416402922" target="_blank">\u97f3\u4e50\u5206\u4eab</a>',
           url: $it.data('url'),
           pic: Label.staticServePath + '/images/music.png',
         },
@@ -974,16 +974,16 @@ var Article = {
       mode: 'order',
       preload: 'none',
       music: {
-        title: '语音预览',
-        author: '<a href="https://hacpai.com/member/v" target="_blank">小薇</a>',
+        title: '\u8bed\u97f3\u9884\u89c8',
+        author: '<a href="https://hacpai.com/member/v" target="_blank">\u5c0f\u8587</a>',
         url: $articleAudio.data('url'),
         pic: Label.staticServePath + '/images/blank.png',
       },
     })
   },
   /**
-   * @description 没有权限的提示
-   * @param {String} tip 提示内容
+   * @description \u6ca1\u6709\u6743\u9650\u7684\u63d0\u793a
+   * @param {String} tip \u63d0\u793a\u5185\u5bb9
    */
   permissionTip: function (tip) {
     if (Label.isLoggedIn) {
@@ -993,9 +993,9 @@ var Article = {
     }
   },
   /**
-   * @description 赞同
-   * @param {String} id 赞同的实体数据 id
-   * @param {String} type 赞同的实体类型
+   * @description \u8d5e\u540c
+   * @param {String} id \u8d5e\u540c\u7684\u5b9e\u4f53\u6570\u636e id
+   * @param {String} type \u8d5e\u540c\u7684\u5b9e\u4f53\u7c7b\u578b
    */
   voteUp: function (id, type, it) {
     if (!Label.isLoggedIn) {
@@ -1046,9 +1046,9 @@ var Article = {
     })
   },
   /**
-   * @description 反对
-   * @param {String} id 反对的实体数据 id
-   * @param {String} type 反对的实体类型
+   * @description \u53cd\u5bf9
+   * @param {String} id \u53cd\u5bf9\u7684\u5b9e\u4f53\u6570\u636e id
+   * @param {String} type \u53cd\u5bf9\u7684\u5b9e\u4f53\u7c7b\u578b
    */
   voteDown: function (id, type, it) {
     if (!Label.isLoggedIn) {
@@ -1098,7 +1098,7 @@ var Article = {
     })
   },
   /**
-   * @description 大图预览等待获取大小后重制 translate
+   * @description \u5927\u56fe\u9884\u89c8\u7b49\u5f85\u83b7\u53d6\u5927\u5c0f\u540e\u91cd\u5236 translate
    */
   previewImgAfterLoading: function () {
     $('.img-preview img').css('transform', 'translate3d(' +
@@ -1113,7 +1113,7 @@ var Article = {
     }, 300)
   },
   /**
-   * @description 初始化文章
+   * @description \u521d\u59cb\u5316\u6587\u7ae0
    */
   init: function () {
     this.initToc()
@@ -1276,9 +1276,9 @@ var Article = {
     }
   },
   /**
-   * 历史版本对比
-   * @param {string} id 文章/评论 id
-   * @param {string} type 类型[comment, article]
+   * \u5386\u53f2\u7248\u672c\u5bf9\u6bd4
+   * @param {string} id \u6587\u7ae0/\u8bc4\u8bba id
+   * @param {string} type \u7c7b\u578b[comment, article]
    * @returns {undefined}
    */
   revision: function (id, type) {
@@ -1348,7 +1348,7 @@ var Article = {
     $('#revision').dialog('open')
   },
   /**
-   * 上一版本，下一版本对比
+   * \u4e0a\u4e00\u7248\u672c\uff0c\u4e0b\u4e00\u7248\u672c\u5bf9\u6bd4
    * @returns {undefined}
    */
   _revisionsControls: function (type) {
@@ -1427,7 +1427,7 @@ var Article = {
     })
   },
   /**
-   * @description 分享按钮
+   * @description \u5206\u4eab\u6309\u94ae
    */
   share: function () {
     var shareL = parseInt($('.article-footer').css('margin-left')) / 2 - 15
@@ -1487,7 +1487,7 @@ var Article = {
       })
   },
   /*
-   * @description 解析语法高亮
+   * @description \u89e3\u6790\u8bed\u6cd5\u9ad8\u4eae
    */
   parseLanguage: function () {
     if (Label.markedAvailable) {
@@ -1499,7 +1499,7 @@ var Article = {
     })
   },
   /**
-   * @description 打赏
+   * @description \u6253\u8d4f
    */
   reward: function (articleId) {
     var r = confirm(Label.rewardConfirmLabel)
@@ -1533,7 +1533,7 @@ var Article = {
     }
   },
   /**
-   * @description 感谢文章
+   * @description \u611f\u8c22\u6587\u7ae0
    */
   thankArticle: function (articleId, articleAnonymous) {
     if (!Label.isLoggedIn) {
@@ -1541,7 +1541,7 @@ var Article = {
       return false
     }
 
-    // 匿名贴不需要 confirm
+    // \u533f\u540d\u8d34\u4e0d\u9700\u8981 confirm
     if (0 === articleAnonymous && !confirm(Label.thankArticleConfirmLabel)) {
       return false
     }
@@ -1596,7 +1596,7 @@ var Article = {
     })
   },
   /**
-   * @description 置顶
+   * @description \u7f6e\u9876
    */
   stick: function (articleId) {
     var r = confirm(Label.stickConfirmLabel)
@@ -1615,16 +1615,16 @@ var Article = {
     }
   },
   /**
-   * @description 播放思绪
-   * @param {string} articleContent 记录过程
+   * @description \u64ad\u653e\u601d\u7eea
+   * @param {string} articleContent \u8bb0\u5f55\u8fc7\u7a0b
    */
   playThought: function (articleContent) {
-    // - 0x1E: Record Separator (记录分隔符)
-    // + 0x1F: Unit Separator (单元分隔符)
+    // - 0x1E: Record Separator (\u8bb0\u5f55\u5206\u9694\u7b26)
+    // + 0x1F: Unit Separator (\u5355\u5143\u5206\u9694\u7b26)
 
     var fast = 2
     var genThought = function (record, articleLinesList) {
-      var units = record.split('')
+      var units = record.split('\x1f')
       if (units.length === 3) {
         units.splice(0, 0, '')
       }
@@ -1636,7 +1636,7 @@ var Article = {
       to[0] = parseInt(to[0])    // to.ch
       to[1] = parseInt(to[1])    // to.line
 
-      if (srcLinesContent === '') {
+      if (srcLinesContent === '\x18') {
         // remove
         var removeLines = []
         for (var n = from[1], m = 0; n <= to[1], n <
@@ -1676,9 +1676,9 @@ var Article = {
       return articleLinesList
     }
 
-    var records = articleContent.split('')
+    var records = articleContent.split('\x1e')
 
-    // 分隔符后的''删除
+    // \u5206\u9694\u7b26\u540e\u7684''\u5220\u9664
     if (records[records.length - 1] === '') {
       records.pop()
     }
@@ -1698,13 +1698,13 @@ var Article = {
 
         $('.article-content').data('text', articleText).html(articleHTML)
 
-      }, parseInt(records[i].split('')[1]) / fast)
+      }, parseInt(records[i].split('\x1f')[1]) / fast)
     }
 
     // progress
     var currentTime = 0,
-      step = 20, // 间隔速度
-      amountTime = parseInt(records[i - 1].split('')[1]) / fast + step * 6
+      step = 20, // \u95f4\u9694\u901f\u5ea6
+      amountTime = parseInt(records[i - 1].split('\x1f')[1]) / fast + step * 6
     var interval = setInterval(function () {
       if (currentTime >= amountTime) {
         $('#thoughtProgress .bar').width('100%')
@@ -1749,7 +1749,7 @@ var Article = {
       html('')
   },
   /**
-   * @description 初始化目录.
+   * @description \u521d\u59cb\u5316\u76ee\u5f55.
    */
   initToc: function () {
     if ($('#articleToC').length === 0) {
@@ -1772,7 +1772,7 @@ var Article = {
         ($('.article-footer').offset().left - 58)) + 'px')
     $('#articleToC > .module-panel').height($(window).height() - 48)
 
-    // 样式
+    // \u6837\u5f0f
     var $articleToc = $('#articleToC'),
       $articleTocUl = $('.article-toc'),
       $articleTocs = $('.article-content [id^=toc]'),
@@ -1780,7 +1780,7 @@ var Article = {
       top = $articleToc.offset().top
     toc = []
 
-    // 目录点击
+    // \u76ee\u5f55\u70b9\u51fb
     $articleToc.find('li').click(function () {
       var $it = $(this)
       setTimeout(function () {
@@ -1795,7 +1795,7 @@ var Article = {
       }
       $('#articleToC > .module-panel').height($(window).height() - 49)
 
-      // 界面各种图片加载会导致帖子目录定位
+      // \u754c\u9762\u5404\u79cd\u56fe\u7247\u52a0\u8f7d\u4f1a\u5bfc\u81f4\u5e16\u5b50\u76ee\u5f55\u5b9a\u4f4d
       toc = []
       $articleTocs.each(function (i) {
         toc.push({
@@ -1804,7 +1804,7 @@ var Article = {
         })
       })
 
-      // 当前目录样式
+      // \u5f53\u524d\u76ee\u5f55\u6837\u5f0f
       var scrollTop = $(window).scrollTop()
       for (var i = 0, iMax = toc.length; i < iMax; i++) {
         if (scrollTop < toc[i].offsetTop - 53) {
@@ -1834,7 +1834,7 @@ var Article = {
           $articleTocUl.scrollTop(liOffsetTop)
         }
       }
-      // 在目录上滚动到边界时，会滚动 window，为了不让 window 滚动触发目录滚动。
+      // \u5728\u76ee\u5f55\u4e0a\u6eda\u52a8\u5230\u8fb9\u754c\u65f6\uff0c\u4f1a\u6eda\u52a8 window\uff0c\u4e3a\u4e86\u4e0d\u8ba9 window \u6eda\u52a8\u89e6\u53d1\u76ee\u5f55\u6eda\u52a8\u3002
       setTimeout(function () {
         isUlScroll = false
       }, 600)
@@ -1848,7 +1848,7 @@ var Article = {
       })
   },
   /**
-   * @description 目录展现隐藏切换.
+   * @description \u76ee\u5f55\u5c55\u73b0\u9690\u85cf\u5207\u6362.
    */
   toggleToc: function () {
     var $articleToc = $('#articleToC')
@@ -1872,7 +1872,7 @@ var Article = {
     }
   },
   /**
-   * @description 标记消息通知为已读状态.
+   * @description \u6807\u8bb0\u6d88\u606f\u901a\u77e5\u4e3a\u5df2\u8bfb\u72b6\u6001.
    */
   makeNotificationRead: function (articleId, commentIds) {
     var requestJSONObject = {

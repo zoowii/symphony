@@ -16,17 +16,17 @@
 		getTime : function() {
 			return new Date * 1;
 		},
-		// 获取URL不带hash的部分,切去掉pjax=true部分
+		// \u83b7\u53d6URL\u4e0d\u5e26hash\u7684\u90e8\u5206,\u5207\u53bb\u6389pjax=true\u90e8\u5206
 		getRealUrl : function(url) {
 			url = (url || '').replace(/\#.*?$/, '');
 			url = url.replace('?pjax=true&', '?').replace('?pjax=true', '').replace('&pjax=true', '');
 			return url;
 		},
-		// 获取url的hash部分
+		// \u83b7\u53d6url\u7684hash\u90e8\u5206
 		getUrlHash : function(url) {
 			return url.replace(/^[^\#]*(?:\#(.*?))?$/, '$1');
 		},
-		// 获取本地存储的key
+		// \u83b7\u53d6\u672c\u5730\u5b58\u50a8\u7684key
 		getLocalKey : function(src) {
 			var s = 'pjax_' + encodeURIComponent(src);
 			return {
@@ -35,7 +35,7 @@
 				title : s + '_title'
 			};
 		},
-		// 清除所有的cache
+		// \u6e05\u9664\u6240\u6709\u7684cache
 		removeAllCache : function() {
 			if (!Util.support.storage)
 				return;
@@ -45,7 +45,7 @@
 				}
 			}
 		},
-		// 获取cache
+		// \u83b7\u53d6cache
 		getCache : function(src, time, flag) {
 			var item, vkey, tkey, tval;
 			time = Util.toInt(time);
@@ -56,7 +56,7 @@
 				} else {
 					delete Util.stack[src];
 				}
-			} else if (flag && Util.support.storage) { // 从localStorage里查询
+			} else if (flag && Util.support.storage) { // \u4ecelocalStorage\u91cc\u67e5\u8be2
 				var l = Util.getLocalKey(src);
 				vkey = l.data;
 				tkey = l.time;
@@ -77,7 +77,7 @@
 			}
 			return null;
 		},
-		// 设置cache
+		// \u8bbe\u7f6ecache
 		setCache : function(src, data, title, flag) {
 			var time = Util.getTime(), key;
 			Util.stack[src] = {
@@ -92,7 +92,7 @@
 				localStorage.setItem(key.title, title);
 			}
 		},
-		// 清除cache
+		// \u6e05\u9664cache
 		removeCache : function(src) {
 			src = Util.getRealUrl(src || location.href);
 			delete Util.stack[src];
@@ -120,7 +120,7 @@
 				return true;
 			}
 			var $this = $(this), href = $this.attr('href');
-			// 过滤
+			// \u8fc7\u6ee4
 			if (typeof options.filter === 'function') {
 				if (options.filter.call(this, href, this) === true){
 					return true;
@@ -129,7 +129,7 @@
 			if (href === location.href) {
 				return true;
 			}
-			// 只是hash不同
+			// \u53ea\u662fhash\u4e0d\u540c
 			if (Util.getRealUrl(href) == Util.getRealUrl(location.href)) {
 				var hash = Util.getUrlHash(href);
 				if (hash) {
@@ -146,7 +146,7 @@
 				element : this,
 				push: true
 			});
-			// 发起请求
+			// \u53d1\u8d77\u8bf7\u6c42
 			pjax.request(options);
 		});
 	};
@@ -154,23 +154,23 @@
 	pjax.options = {};
 	pjax.state = {};
 
-	// 默认选项
+	// \u9ed8\u8ba4\u9009\u9879
 	pjax.defaultOptions = {
 		timeout : 2000,
 		element : null,
-		cache : 24 * 3600, // 缓存时间, 0为不缓存, 单位为秒
-		storage : true, // 是否使用localstorage将数据保存到本地
-		url : '', // 链接地址
+		cache : 24 * 3600, // \u7f13\u5b58\u65f6\u95f4, 0\u4e3a\u4e0d\u7f13\u5b58, \u5355\u4f4d\u4e3a\u79d2
+		storage : true, // \u662f\u5426\u4f7f\u7528localstorage\u5c06\u6570\u636e\u4fdd\u5b58\u5230\u672c\u5730
+		url : '', // \u94fe\u63a5\u5730\u5740
 		push : true, // true is push, false is replace, null for do nothing
-		show : '', // 展示的动画
-		title : '', // 标题
-		titleSuffix : '',// 标题后缀
+		show : '', // \u5c55\u793a\u7684\u52a8\u753b
+		title : '', // \u6807\u9898
+		titleSuffix : '',// \u6807\u9898\u540e\u7f00
 		type : 'GET',
 		data : {
 			pjax : true
 		},
 		dataType : 'html',
-		callback : null, // 回调函数
+		callback : null, // \u56de\u8c03\u51fd\u6570
 		// for jquery
 		beforeSend : function(xhr) {
 			$(pjax.options.container).trigger('pjax.start', [ xhr, pjax.options ]);
@@ -186,7 +186,7 @@
 			$(pjax.options.container).trigger('pjax.end', [ xhr, pjax.options ]);
 		}
 	};
-	// 展现动画
+	// \u5c55\u73b0\u52a8\u753b
 	pjax.showFx = {
 		"_default" : function(data, callback, isCached) {
 			this.html(data);
@@ -206,7 +206,7 @@
 			}
 		}
 	}
-	// 展现函数
+	// \u5c55\u73b0\u51fd\u6570
 	pjax.showFn = function(showType, container, data, fn, isCached) {
 		var fx = null;
 		if (typeof showType === 'function') {
@@ -299,13 +299,13 @@
 				type : isCached? 'cache' : 'success'
 			});
 		}, isCached);
-		// 设置cache
+		// \u8bbe\u7f6ecache
 		if (pjax.options.cache && !isCached) {
 			Util.setCache(pjax.options.url, data, title, pjax.options.storage);
 		}
 	};
 
-	// 发送请求
+	// \u53d1\u9001\u8bf7\u6c42
 	pjax.request = function(options) {
 		if(options.hasOwnProperty('data')){
 			pjax.defaultOptions.data=options.data;
@@ -324,11 +324,11 @@
 			options.cache = 24 * 3600;
 		}
 		options.cache = Util.toInt(options.cache);
-		// 如果将缓存时间设为0，则将之前的缓存也清除
+		// \u5982\u679c\u5c06\u7f13\u5b58\u65f6\u95f4\u8bbe\u4e3a0\uff0c\u5219\u5c06\u4e4b\u524d\u7684\u7f13\u5b58\u4e5f\u6e05\u9664
 		if (options.cache === 0) {
 			Util.removeAllCache();
 		}
-		// 展现函数
+		// \u5c55\u73b0\u51fd\u6570
 		if (!options.showFn) {
 			options.showFn = function(data, fn, isCached) {
 				pjax.showFn(options.show, container, data, fn, isCached);

@@ -88,12 +88,12 @@ var Gobang = {
     getChessManPoint:function(mouse,player){
         var xo = mouse.x;
         var yo = mouse.y;
-        mouse.x = Math.floor(mouse.x / 10) * 10;//取整
+        mouse.x = Math.floor(mouse.x / 10) * 10;//\u53d6\u6574
         mouse.y = Math.floor(mouse.y / 10) * 10;
         var xm = mouse.x;
         var xn = mouse.x;
         var ym = mouse.y;
-        var yn = mouse.y;//定义任意落点相邻的四个坐标，应能整除unitSize
+        var yn = mouse.y;//\u5b9a\u4e49\u4efb\u610f\u843d\u70b9\u76f8\u90bb\u7684\u56db\u4e2a\u5750\u6807\uff0c\u5e94\u80fd\u6574\u9664unitSize
         var posX = 0;
         var posY = 0;
         while(xn % 30 != 0){
@@ -204,7 +204,7 @@ var GobangChannel = {
 
         GobangChannel.ws.onmessage = function (evt) {
             var resp = JSON.parse(evt.data);
-            // 1：聊天，2：下子，3：创建游戏，等待加入，4：加入游戏，游戏开始，5：断线重连，恢复棋盘，6：系统通知
+            // 1\uff1a\u804a\u5929\uff0c2\uff1a\u4e0b\u5b50\uff0c3\uff1a\u521b\u5efa\u6e38\u620f\uff0c\u7b49\u5f85\u52a0\u5165\uff0c4\uff1a\u52a0\u5165\u6e38\u620f\uff0c\u6e38\u620f\u5f00\u59cb\uff0c5\uff1a\u65ad\u7ebf\u91cd\u8fde\uff0c\u6062\u590d\u68cb\u76d8\uff0c6\uff1a\u7cfb\u7edf\u901a\u77e5
             switch(resp.type){
                 case 1:
                     $(".side ul").prepend('<li>' + resp.player + ": " + resp.message + '</li>');

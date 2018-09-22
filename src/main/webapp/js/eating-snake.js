@@ -29,11 +29,11 @@ var EatingSnake = {
     lastDir: null,
     map: null,
     food: null,
-    R: 10, // 圆半径或者外接正方形尺寸的一半
+    R: 10, // \u5706\u534a\u5f84\u6216\u8005\u5916\u63a5\u6b63\u65b9\u5f62\u5c3a\u5bf8\u7684\u4e00\u534a
     size: 30,
     snake: null,
-    // oMark: null, // 分数显示框
-    isPause: false, // 是否暂停
+    // oMark: null, // \u5206\u6570\u663e\u793a\u6846
+    isPause: false, // \u662f\u5426\u6682\u505c
     snakeCanvas: null,
     interval: null,
     currTime: 200,
@@ -116,7 +116,7 @@ var EatingSnake = {
     },
     check: function (x, y) {
         if (EatingSnake.map[x][y] != 0)
-            return true; // true代表此处有填充p
+            return true; // true\u4ee3\u8868\u6b64\u5904\u6709\u586b\u5145p
         else
             return false;
     },
@@ -178,17 +178,17 @@ var EatingSnake = {
 //                ctx.measureText(txt).width
                 var resultText;
                 if (score <= 10) {
-                    resultText = "童鞋，换键盘吧，要不行换手";
+                    resultText = "\u7ae5\u978b\uff0c\u6362\u952e\u76d8\u5427\uff0c\u8981\u4e0d\u884c\u6362\u624b";
                 } else if (score > 10 && score <= 20) {
-                    resultText = "如此平凡的分数恕我无力吐槽";
+                    resultText = "\u5982\u6b64\u5e73\u51e1\u7684\u5206\u6570\u6055\u6211\u65e0\u529b\u5410\u69fd";
                 } else if (score > 20 && score <= 30) {
-                    resultText = "哇哦，好厉害哦！";
+                    resultText = "\u54c7\u54e6\uff0c\u597d\u5389\u5bb3\u54e6\uff01";
                 } else if (score > 30 && score <= 40) {
-                    resultText = "哎呀我滴老天爷呀";
+                    resultText = "\u54ce\u5440\u6211\u6ef4\u8001\u5929\u7237\u5440";
                 } else if (score > 40 && score <= 50) {
-                    resultText = "请收下我的膝盖 OTZ";
+                    resultText = "\u8bf7\u6536\u4e0b\u6211\u7684\u819d\u76d6 OTZ";
                 } else {
-                    resultText = "太假了！(╯‵□′)╯︵┻━┻";
+                    resultText = "\u592a\u5047\u4e86\uff01(\u256f\u2035\u25a1\u2032)\u256f\ufe35\u253b\u2501\u253b";
                 }
                 textWidth = EatingSnake.snakeCanvas.measureText(resultText).width;
                 EatingSnake.snakeCanvas.fillText(resultText, 155 + (290 - textWidth) / 2, 250);
@@ -241,34 +241,34 @@ var EatingSnake = {
     input: function (keyCode) {
         switch (keyCode) {
             case 65:
-            case 37: // 左边
+            case 37: // \u5de6\u8fb9
                 if (EatingSnake.lastDir.x == 0) {
                     EatingSnake.dir.x = -1;
                     EatingSnake.dir.y = 0;
                 }
                 break;
             case 87:
-            case 38: // 上边
+            case 38: // \u4e0a\u8fb9
                 if (EatingSnake.lastDir.y == 0) {
                     EatingSnake.dir.x = 0;
                     EatingSnake.dir.y = -1;
                 }
                 break;
             case 68:
-            case 39: // 右边
+            case 39: // \u53f3\u8fb9
                 if (EatingSnake.lastDir.x == 0) {
                     EatingSnake.dir.x = 1;
                     EatingSnake.dir.y = 0;
                 }
                 break;
             case 83:
-            case 40: // 下边
+            case 40: // \u4e0b\u8fb9
                 if (EatingSnake.lastDir.y == 0) {
                     EatingSnake.dir.x = 0;
                     EatingSnake.dir.y = 1;
                 }
                 break;
-            case 80: // 开始/暂停
+            case 80: // \u5f00\u59cb/\u6682\u505c
                 if (EatingSnake.isPause) {
                     EatingSnake.interval = setInterval(gameRun, currTime);
                     EatingSnake.isPause = false;
@@ -311,9 +311,9 @@ var EatingSnake = {
     start: function (csrfToken) {
 
         window.addEventListener('keydown', function (event) {
-            // 如果游戏的时候时使用方向键
+            // \u5982\u679c\u6e38\u620f\u7684\u65f6\u5019\u65f6\u4f7f\u7528\u65b9\u5411\u952e
             if (event.keyCode == 37 || event.keyCode == 38 || event.keyCode == 39 || event.keyCode == 40) {
-                // 阻止方向键滚屏
+                // \u963b\u6b62\u65b9\u5411\u952e\u6eda\u5c4f
                 event.preventDefault();
                 return false;
             }

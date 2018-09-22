@@ -30,7 +30,7 @@
  */
 var Settings = {
   /**
-   * 举报
+   * \u4e3e\u62a5
    * @param it
    */
   report: function (it) {
@@ -59,7 +59,7 @@ var Settings = {
     })
   },
   /**
-   * 获取邮箱验证码
+   * \u83b7\u53d6\u90ae\u7bb1\u9a8c\u8bc1\u7801
    * @param csrfToken
    */
   getEmailCaptcha: function (csrfToken) {
@@ -87,7 +87,7 @@ var Settings = {
     })
   },
   /**
-   * 更新邮箱
+   * \u66f4\u65b0\u90ae\u7bb1
    */
   updateEmail: function (csrfToken) {
     $('#emailSubmitBtn').attr('disabled', 'disabled').css('opacity', '0.3')
@@ -128,7 +128,7 @@ var Settings = {
     })
   },
   /**
-   * 个人主页滚动固定
+   * \u4e2a\u4eba\u4e3b\u9875\u6eda\u52a8\u56fa\u5b9a
    */
   homeScroll: function () {
     $('.nav-tabs').html($('.home-menu').html());
@@ -139,7 +139,7 @@ var Settings = {
     $('.main').css('paddingTop', '68px');
   },
   /**
-   * 通知页面侧边栏滚动固定
+   * \u901a\u77e5\u9875\u9762\u4fa7\u8fb9\u680f\u6eda\u52a8\u56fa\u5b9a
    */
   notiScroll: function () {
     var $side = $('#side'),
@@ -166,7 +166,7 @@ var Settings = {
     });
   },
   /**
-   * 有代码片段时，需要进行高亮
+   * \u6709\u4ee3\u7801\u7247\u6bb5\u65f6\uff0c\u9700\u8981\u8fdb\u884c\u9ad8\u4eae
    * @returns {Boolean}
    */
   initHljs: function () {
@@ -185,7 +185,7 @@ var Settings = {
     });
   },
   /**
-   * 个人设置预览
+   * \u4e2a\u4eba\u8bbe\u7f6e\u9884\u89c8
    */
   preview: function (it) {
     if ($('#homeSidePanel').css('display') === 'block') {
@@ -202,13 +202,13 @@ var Settings = {
     }
   },
   /**
-   * 初始化个人设置中的头像图片上传.
+   * \u521d\u59cb\u5316\u4e2a\u4eba\u8bbe\u7f6e\u4e2d\u7684\u5934\u50cf\u56fe\u7247\u4e0a\u4f20.
    *
    * @returns {Boolean}
    */
   initUploadAvatar: function (params, succCB, succCBQN) {
     var ext = "";
-    if ("" === params.qiniuUploadToken) { // 说明没有使用七牛，而是使用本地
+    if ("" === params.qiniuUploadToken) { // \u8bf4\u660e\u6ca1\u6709\u4f7f\u7528\u4e03\u725b\uff0c\u800c\u662f\u4f7f\u7528\u672c\u5730
       $('#' + params.id).fileupload({
         acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
         maxFileSize: parseInt(params.maxSize),
@@ -336,7 +336,7 @@ var Settings = {
     }
   },
   /**
-   * 数据导出.
+   * \u6570\u636e\u5bfc\u51fa.
    */
   exportPosts: function () {
     $.ajax({
@@ -355,7 +355,7 @@ var Settings = {
     });
   },
   /**
-   * @description 修改地理位置状态
+   * @description \u4fee\u6539\u5730\u7406\u4f4d\u7f6e\u72b6\u6001
    * @param {type} csrfToken CSRF token
    */
   changeGeoStatus: function (csrfToken) {
@@ -375,7 +375,7 @@ var Settings = {
     });
   },
   /**
-   * @description 积分转账
+   * @description \u79ef\u5206\u8f6c\u8d26
    * @argument {String} csrfToken CSRF token
    */
   pointTransfer: function (csrfToken) {
@@ -429,7 +429,7 @@ var Settings = {
     }
   },
   /**
-   * @description 积分兑换邀请码
+   * @description \u79ef\u5206\u5151\u6362\u9080\u8bf7\u7801
    * @argument {String} csrfToken CSRF token
    */
   pointBuyInvitecode: function (csrfToken) {
@@ -458,7 +458,7 @@ var Settings = {
     });
   },
   /**
-   * @description 查询邀请码状态
+   * @description \u67e5\u8be2\u9080\u8bf7\u7801\u72b6\u6001
    * @param {String} csrfToken CSRF token
    * @returns {undefined}
    */
@@ -500,7 +500,7 @@ var Settings = {
     });
   },
   /**
-   * @description 更新 settings 页面数据.
+   * @description \u66f4\u65b0 settings \u9875\u9762\u6570\u636e.
    * @argument {String} csrfToken CSRF token
    */
   update: function (type, csrfToken) {
@@ -619,7 +619,7 @@ var Settings = {
     });
   },
   /**
-   * @description 需要在上传完成后调用该函数来更新用户头像数据.
+   * @description \u9700\u8981\u5728\u4e0a\u4f20\u5b8c\u6210\u540e\u8c03\u7528\u8be5\u51fd\u6570\u6765\u66f4\u65b0\u7528\u6237\u5934\u50cf\u6570\u636e.
    * @argument {String} csrfToken CSRF token
    */
   updateAvatar: function (csrfToken) {
@@ -646,8 +646,8 @@ var Settings = {
     });
   },
   /**
-   * @description settings 页面 profiles 数据校验
-   * @returns {boolean/obj} 当校验不通过时返回 false，否则返回校验数据值。
+   * @description settings \u9875\u9762 profiles \u6570\u636e\u6821\u9a8c
+   * @returns {boolean/obj} \u5f53\u6821\u9a8c\u4e0d\u901a\u8fc7\u65f6\u8fd4\u56de false\uff0c\u5426\u5219\u8fd4\u56de\u6821\u9a8c\u6570\u636e\u503c\u3002
    */
   _validateProfiles: function () {
     if (Validate.goValidate({
@@ -689,8 +689,8 @@ var Settings = {
     }
   },
   /**
-   * @description settings 页面密码校验
-   * @returns {boolean/obj} 当校验不通过时返回 false，否则返回校验数据值。
+   * @description settings \u9875\u9762\u5bc6\u7801\u6821\u9a8c
+   * @returns {boolean/obj} \u5f53\u6821\u9a8c\u4e0d\u901a\u8fc7\u65f6\u8fd4\u56de false\uff0c\u5426\u5219\u8fd4\u56de\u6821\u9a8c\u6570\u636e\u503c\u3002
    */
   _validatePassword: function () {
     var pwdVal = $("#pwdOld").val(),
@@ -719,8 +719,8 @@ var Settings = {
     return false;
   },
   /**
-   * @description settings 页面表情校验（不知道有啥可校验的，暂不做校验）
-   * @returns {boolean/obj} 当校验不通过时返回 false，否则返回校验数据值。
+   * @description settings \u9875\u9762\u8868\u60c5\u6821\u9a8c\uff08\u4e0d\u77e5\u9053\u6709\u5565\u53ef\u6821\u9a8c\u7684\uff0c\u6682\u4e0d\u505a\u6821\u9a8c\uff09
+   * @returns {boolean/obj} \u5f53\u6821\u9a8c\u4e0d\u901a\u8fc7\u65f6\u8fd4\u56de false\uff0c\u5426\u5219\u8fd4\u56de\u6821\u9a8c\u6570\u636e\u503c\u3002
    */
   _validateEmotionList: function () {
     return {
@@ -728,7 +728,7 @@ var Settings = {
     };
   },
   /**
-   * @description 标记所有消息通知为已读状态.
+   * @description \u6807\u8bb0\u6240\u6709\u6d88\u606f\u901a\u77e5\u4e3a\u5df2\u8bfb\u72b6\u6001.
    */
   makeAllNotificationsRead: function () {
     $.ajax({
@@ -743,7 +743,7 @@ var Settings = {
     });
   },
   /**
-   * @description 删除消息.
+   * @description \u5220\u9664\u6d88\u606f.
    */
   removeNotifications: function (type) {
     $.ajax({
@@ -759,7 +759,7 @@ var Settings = {
     return false;
   },
   /**
-   * @description 设置常用表情点击事件绑定.
+   * @description \u8bbe\u7f6e\u5e38\u7528\u8868\u60c5\u70b9\u51fb\u4e8b\u4ef6\u7ed1\u5b9a.
    */
   initFunction: function () {
     $("#emojiGrid img").click(function () {
@@ -775,7 +775,7 @@ var Settings = {
     });
   },
   /**
-   * 个人主页初始化
+   * \u4e2a\u4eba\u4e3b\u9875\u521d\u59cb\u5316
    */
   initHome: function () {
     if (Label.type === 'commentsAnonymous' || 'comments' === Label.type) {

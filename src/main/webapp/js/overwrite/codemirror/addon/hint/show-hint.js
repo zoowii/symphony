@@ -217,7 +217,7 @@
       elt.className = className;
       if (cur.render) cur.render(elt, data, cur);
       else {
-          // NOTE: 修改源码，使 html 标签不被转义
+          // NOTE: \u4fee\u6539\u6e90\u7801\uff0c\u4f7f html \u6807\u7b7e\u4e0d\u88ab\u8f6c\u4e49
           elt.appendChild($(cur.displayText || getText(cur))[0]);
       }
       elt.hintId = i;

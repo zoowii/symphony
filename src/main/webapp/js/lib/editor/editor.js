@@ -1065,7 +1065,7 @@
 
         var label = ariaLabels[options.name]
         if (isMac) {
-            label = label.replace('ctrl', '⌘').replace('shift', '⇧');
+            label = label.replace('ctrl', '\u2318').replace('shift', '\u21e7');
         }
 
         el.className = 'tooltipped tooltipped-ne';
@@ -1519,7 +1519,7 @@
             this.render();
         }
 
-        // 同步预览
+        // \u540c\u6b65\u9884\u89c8
         this.codemirror.on('scroll', function (cm) {
             var preview = cm.getWrapperElement().lastChild;
             if (preview.className.indexOf('editor-preview-active') === -1) {

@@ -32,9 +32,9 @@ var AddArticle = {
   editor: undefined,
   rewardEditor: undefined,
   /**
-   * @description 删除文章
-   * @csrfToken [string] CSRF 令牌
-   * @it [bom] 调用事件的元素
+   * @description \u5220\u9664\u6587\u7ae0
+   * @csrfToken [string] CSRF \u4ee4\u724c
+   * @it [bom] \u8c03\u7528\u4e8b\u4ef6\u7684\u5143\u7d20
    */
   remove: function (csrfToken, it) {
     if (!confirm(Label.confirmRemoveLabel)) {
@@ -70,9 +70,9 @@ var AddArticle = {
     })
   },
   /**
-   * @description 发布文章
-   * @csrfToken [string] CSRF 令牌
-   * @it [Bom] 触发事件的元素
+   * @description \u53d1\u5e03\u6587\u7ae0
+   * @csrfToken [string] CSRF \u4ee4\u724c
+   * @it [Bom] \u89e6\u53d1\u4e8b\u4ef6\u7684\u5143\u7d20
    */
   add: function (csrfToken, it) {
     if (Validate.goValidate({
@@ -95,7 +95,7 @@ var AddArticle = {
         $('input[type=\'radio\'][name=\'articleType\']:checked').val())
 
       if (articleType !== 5) {
-        // 打赏区启用后积分不能为空
+        // \u6253\u8d4f\u533a\u542f\u7528\u540e\u79ef\u5206\u4e0d\u80fd\u4e3a\u7a7a
         if ($('#articleRewardPoint').data('orval')
           && !/^\+?[1-9][0-9]*$/.test($('#articleRewardPoint').val())) {
           $('#addArticleTip').addClass('error').html('<ul><li>'
@@ -132,7 +132,7 @@ var AddArticle = {
 
       var url = Label.servePath + '/article', type = 'POST'
 
-      if (3 === parseInt(requestJSONObject.articleType)) { // 如果是“思绪”
+      if (3 === parseInt(requestJSONObject.articleType)) { // \u5982\u679c\u662f\u201c\u601d\u7eea\u201d
         requestJSONObject.articleContent = JSON.parse(
           window.localStorage.postData).thoughtContent
       }
@@ -175,7 +175,7 @@ var AddArticle = {
     }
   },
   /**
-   * @description 初始化发文
+   * @description \u521d\u59cb\u5316\u53d1\u6587
    */
   init: function () {
     $.ua.set(navigator.userAgent)
@@ -220,7 +220,7 @@ var AddArticle = {
         css('margin-top', 0)
     } else {
       Util.initCodeMirror()
-      // 初始化文章编辑器
+      // \u521d\u59cb\u5316\u6587\u7ae0\u7f16\u8f91\u5668
       var addArticleEditor = new Editor({
         element: document.getElementById('articleContent'),
         dragDrop: false,
@@ -259,12 +259,12 @@ var AddArticle = {
       AddArticle.editor = addArticleEditor.codemirror
     }
 
-    // 默认使用 preview
+    // \u9ed8\u8ba4\u4f7f\u7528 preview
     $('.post-article-content .editor-toolbar .icon-view:eq(0)').
       parent().
       click()
 
-    // 私信 at 默认值
+    // \u79c1\u4fe1 at \u9ed8\u8ba4\u503c
     var atIdx = location.href.indexOf('at=')
     if (-1 !== atIdx) {
       if ('' == postData.content) {
@@ -347,7 +347,7 @@ var AddArticle = {
         }
 
         var change = '',
-          unitSep = String.fromCharCode(31), // Unit Separator (单元分隔符)
+          unitSep = String.fromCharCode(31), // Unit Separator (\u5355\u5143\u5206\u9694\u7b26)
           time = (new Date()).getTime() - thoughtTime
 
         switch (changes[0].origin) {
@@ -355,7 +355,7 @@ var AddArticle = {
             change = String.fromCharCode(24) + unitSep + time // cancel
               + unitSep + changes[0].from.ch + '-' + changes[0].from.line
               + unitSep + changes[0].to.ch + '-' + changes[0].to.line
-              + String.fromCharCode(30)  // Record Separator (记录分隔符)
+              + String.fromCharCode(30)  // Record Separator (\u8bb0\u5f55\u5206\u9694\u7b26)
             break
           case '*compose':
           case '+input':
@@ -377,7 +377,7 @@ var AddArticle = {
             change += unitSep + time
               + unitSep + changes[0].from.ch + '-' + changes[0].from.line
               + unitSep + changes[0].to.ch + '-' + changes[0].to.line
-              + String.fromCharCode(30)  // Record Separator (记录分隔符)
+              + String.fromCharCode(30)  // Record Separator (\u8bb0\u5f55\u5206\u9694\u7b26)
             break
         }
 
@@ -417,7 +417,7 @@ var AddArticle = {
         return false
       }
 
-      if (1 === Label.articleType) { // 小黑屋不检查
+      if (1 === Label.articleType) { // \u5c0f\u9ed1\u5c4b\u4e0d\u68c0\u67e5
         return
       }
 
@@ -426,7 +426,7 @@ var AddArticle = {
         type: 'POST',
         data: JSON.stringify({
           'articleTitle': $.trim($(this).val()),
-          'articleId': Label.articleOId, // 更新时才有值
+          'articleId': Label.articleOId, // \u66f4\u65b0\u65f6\u624d\u6709\u503c
         }),
         success: function (result, textStatus) {
           if (!result.sc) {
@@ -446,7 +446,7 @@ var AddArticle = {
       })
     })
 
-    // 快捷发文
+    // \u5feb\u6377\u53d1\u6587
     $('#articleTags, #articleRewardPoint, #articleAskPoint').keypress(function (event) {
       if (event.ctrlKey && 10 === event.charCode) {
         AddArticle.add()
@@ -455,7 +455,7 @@ var AddArticle = {
     })
 
     if ($('#articleAskPoint').length === 0) {
-      // 初始化打赏区编辑器
+      // \u521d\u59cb\u5316\u6253\u8d4f\u533a\u7f16\u8f91\u5668
       if (0 < $('#articleRewardPoint').val().replace(/(^\s*)|(\s*$)/g, '')) {
         $('#showReward').click()
       }
@@ -590,13 +590,13 @@ var AddArticle = {
     }
   },
   /**
-   * @description 初始化标签编辑器
+   * @description \u521d\u59cb\u5316\u6807\u7b7e\u7f16\u8f91\u5668
    * @returns {undefined}
    */
   _initTag: function () {
     $.ua.set(navigator.userAgent)
 
-    // 添加 tag 到输入框
+    // \u6dfb\u52a0 tag \u5230\u8f93\u5165\u6846
     var addTag = function (text) {
       if (text.replace(/\s/g, '') === '') {
         return false
@@ -605,7 +605,7 @@ var AddArticle = {
       text = text.replace(/\s/g, '').replace(/,/g, '')
       $('#articleTags').val('')
 
-      // 重复添加处理
+      // \u91cd\u590d\u6dfb\u52a0\u5904\u7406
       $('.tags-input .text').each(function () {
         var $it = $(this)
         if (text === $it.text()) {
@@ -621,7 +621,7 @@ var AddArticle = {
         return false
       }
 
-      // 长度处理
+      // \u957f\u5ea6\u5904\u7406
       if ($('.tags-input .tag').length >= 4) {
         $('#articleTags').val('').data('val', '')
         return false
@@ -649,7 +649,7 @@ var AddArticle = {
       }
     }
 
-    // domains 切换
+    // domains \u5207\u6362
     $('.domains-tags .btn').click(function () {
       $('.domains-tags .btn.current').removeClass('current green')
       $(this).addClass('current').addClass('green')
@@ -657,18 +657,18 @@ var AddArticle = {
       $('#tags' + $(this).data('id')).show()
     })
 
-    // tag 初始化渲染
+    // tag \u521d\u59cb\u5316\u6e32\u67d3
     var initTags = $('#articleTags').val().split(',')
     for (var j = 0, jMax = initTags.length; j < jMax; j++) {
       addTag(initTags[j])
     }
 
-    // 领域 tag 选择
+    // \u9886\u57df tag \u9009\u62e9
     $('.domain-tags .tag').click(function () {
       addTag($(this).text())
     })
 
-    // 移除 tag
+    // \u79fb\u9664 tag
     $('.tags-input').on('click', '.tag > span.close', function () {
       $(this).parent().remove()
       $('#articleTags').
@@ -687,7 +687,7 @@ var AddArticle = {
       }
     })
 
-    // 展现领域 tag 选择面板
+    // \u5c55\u73b0\u9886\u57df tag \u9009\u62e9\u9762\u677f
     $('#articleTags').click(function () {
       $('.post .domains-tags').show()
       if ($.ua.device.type !== 'mobile') {
@@ -697,13 +697,13 @@ var AddArticle = {
       $('#articleTagsSelectedPanel').hide()
     }).blur(function () {
       if ($('#articleTagsSelectedPanel').css('display') === 'block') {
-        // 鼠标点击 completed 面板时避免把输入框的值加入到 tag 中
+        // \u9f20\u6807\u70b9\u51fb completed \u9762\u677f\u65f6\u907f\u514d\u628a\u8f93\u5165\u6846\u7684\u503c\u52a0\u5165\u5230 tag \u4e2d
         return false
       }
       addTag($(this).val())
     })
 
-    // 关闭领域 tag 选择面板
+    // \u5173\u95ed\u9886\u57df tag \u9009\u62e9\u9762\u677f
     $('body').click(function (event) {
       if ($(event.target).closest('.tags-input').length === 1 ||
         $(event.target).closest('.domains-tags').length === 1) {
@@ -712,7 +712,7 @@ var AddArticle = {
       }
     })
 
-    // 自动补全 tag
+    // \u81ea\u52a8\u8865\u5168 tag
     $('#articleTags').completed({
       height: 170,
       onlySelect: true,
@@ -722,33 +722,33 @@ var AddArticle = {
       },
       afterKeyup: function (event) {
         $('.post .domains-tags').hide()
-        // 遇到分词符号自动添加标签
-        if (event.key === ',' || event.key === '，' ||
-          event.key === '、' || event.key === '；' || event.key === ';') {
+        // \u9047\u5230\u5206\u8bcd\u7b26\u53f7\u81ea\u52a8\u6dfb\u52a0\u6807\u7b7e
+        if (event.key === ',' || event.key === '\uff0c' ||
+          event.key === '\u3001' || event.key === '\uff1b' || event.key === ';') {
           var text = $('#articleTags').val()
           addTag(text.substr(0, text.length - 1))
           return false
         }
 
-        // 回车，自动添加标签
+        // \u56de\u8f66\uff0c\u81ea\u52a8\u6dfb\u52a0\u6807\u7b7e
         if (event.keyCode === 13) {
           addTag($('#articleTags').val())
           return false
         }
 
-        // 上下左右
+        // \u4e0a\u4e0b\u5de6\u53f3
         if (event.keyCode === 37 || event.keyCode === 39 ||
           event.keyCode === 38 || event.keyCode === 40) {
           return false
         }
 
-        // ECS 隐藏面板
+        // ECS \u9690\u85cf\u9762\u677f
         if (event.keyCode === 27) {
           $('#articleTagsSelectedPanel').hide()
           return false
         }
 
-        // 删除 tag
+        // \u5220\u9664 tag
         if (event.keyCode === 8 && event.data.settings.chinese === 8
           && event.data.settings.keydownVal.replace(/\s/g, '') === '') {
           $('.tags-input .tag .close:last').click()

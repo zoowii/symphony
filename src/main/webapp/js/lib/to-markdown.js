@@ -677,7 +677,7 @@ function collapseWhitespace(elem, isBlock) {
   while (node !== elem) {
     if (node.nodeType === 3) {
       // Node.TEXT_NODE
-      // Note: start changed by vanessa. 代码片段粘贴的时候换行被吃掉了
+      // Note: start changed by vanessa. \u4ee3\u7801\u7247\u6bb5\u7c98\u8d34\u7684\u65f6\u5019\u6362\u884c\u88ab\u5403\u6389\u4e86
       //var text = node.data.replace(/[ \r\n\t]+/g, ' ');
       var text = node.data.replace(/[ \r\t]+/g, ' ');
       // Note: end changed by vanessa

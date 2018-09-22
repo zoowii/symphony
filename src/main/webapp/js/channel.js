@@ -59,16 +59,16 @@ var ArticleChannel = {
         case 'comment':
           var cmtCount = parseInt(
             $('.comments-header .article-cmt-cnt').text()) + 1
-          // 总帖数更新
+          // \u603b\u5e16\u6570\u66f4\u65b0
           $('.comments-header .article-cmt-cnt').
             text(cmtCount + ' ' + Label.cmtLabel)
 
-          // 新增第一条评论时到底部的锚点
+          // \u65b0\u589e\u7b2c\u4e00\u6761\u8bc4\u8bba\u65f6\u5230\u5e95\u90e8\u7684\u951a\u70b9
           if ($('#comments .list > ul > li').length === 0) {
             $('.comment-header > .fn-none').show()
-            // 显示预览模式 & 回到底部
+            // \u663e\u793a\u9884\u89c8\u6a21\u5f0f & \u56de\u5230\u5e95\u90e8
             $('.comments-header > .fn-none').show()
-            // 显示评论
+            // \u663e\u793a\u8bc4\u8bba
             $('#articleCommentsPanel').parent().show()
           }
 
@@ -82,16 +82,16 @@ var ArticleChannel = {
           $('#' + data.commentId + ' .cmt-via').
             text('via ' + Util.getDeviceByUa(data.commentUA))
 
-          // 回帖高亮，他人回帖不定位，只有自己回帖才定位
+          // \u56de\u5e16\u9ad8\u4eae\uff0c\u4ed6\u4eba\u56de\u5e16\u4e0d\u5b9a\u4f4d\uff0c\u53ea\u6709\u81ea\u5df1\u56de\u5e16\u624d\u5b9a\u4f4d
           if (Label.currentUserName === data.commentAuthorName) {
             Comment._bgFade($('#' + data.commentId))
           }
 
-          // 代码高亮
+          // \u4ee3\u7801\u9ad8\u4eae
           hljs.initHighlighting.called = false
           hljs.initHighlighting()
 
-          // 更新回复的回帖
+          // \u66f4\u65b0\u56de\u590d\u7684\u56de\u5e16
           if (data.commentOriginalCommentId !== '') {
             var $originalComment = $('#' + data.commentOriginalCommentId),
               $replyBtn = $originalComment.find(
@@ -256,7 +256,7 @@ var ChatRoomChannel = {
 
           var namePart = '<a rel="nofollow" href="/member/' + data.userName +
             '"><span class="ft-gray">' + data.userName +
-            '</span></a> <span class="ft-fade"> • ' + data.time + '</span>'
+            '</span></a> <span class="ft-fade"> \u2022 ' + data.time + '</span>'
 
           var liHTML = '<li class="fn-none">'
             + '<div class="fn-flex">'

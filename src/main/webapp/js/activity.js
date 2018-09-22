@@ -30,7 +30,7 @@
  */
 var Activity = {
     /**
-     * @description 上证指数博彩活动下注
+     * @description \u4e0a\u8bc1\u6307\u6570\u535a\u5f69\u6d3b\u52a8\u4e0b\u6ce8
      * @argument {String} csrfToken CSRF token
      */
     bet1A0001: function (csrfToken) {
@@ -62,7 +62,7 @@ var Activity = {
         });
     },
     /**
-     * @description 上证指数博彩活动兑奖
+     * @description \u4e0a\u8bc1\u6307\u6570\u535a\u5f69\u6d3b\u52a8\u5151\u5956
      */
     collect1A0001: function () {
         var requestJSONObject = {
@@ -143,7 +143,7 @@ var Activity = {
         }, false);
     },
     /**
-     * 提交写好字的图片.
+     * \u63d0\u4ea4\u5199\u597d\u5b57\u7684\u56fe\u7247.
      * 
      * @param {string} id canvas id.
      */

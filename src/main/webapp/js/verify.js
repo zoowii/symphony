@@ -29,7 +29,7 @@
  */
 var Verify = {  
     /**
-     * @description 登录
+     * @description \u767b\u5f55
      */
     login: function (goto) {
         if (Validate.goValidate({target: $('#loginTip'),
@@ -229,31 +229,31 @@ var Verify = {
         }
     },
     /**
-     * 登录注册等页面回车事件绑定
+     * \u767b\u5f55\u6ce8\u518c\u7b49\u9875\u9762\u56de\u8f66\u4e8b\u4ef6\u7ed1\u5b9a
      */
     init: function () {
-        // 注册回车事件
+        // \u6ce8\u518c\u56de\u8f66\u4e8b\u4ef6
         $("#registerCaptcha, #registerInviteCode").keyup(function (event) {
             if (event.keyCode === 13) {
                 Verify.register();
             }
         });
 
-        // 忘记密码回车事件
+        // \u5fd8\u8bb0\u5bc6\u7801\u56de\u8f66\u4e8b\u4ef6
         $("#fpwdSecurityCode").keyup(function (event) {
             if (event.keyCode === 13) {
                 Verify.forgetPwd();
             }
         });
 
-        // 登录密码输入框回车事件
+        // \u767b\u5f55\u5bc6\u7801\u8f93\u5165\u6846\u56de\u8f66\u4e8b\u4ef6
         $("#loginPassword, #captchaLogin").keyup(function (event) {
             if (event.keyCode === 13) {
                 $('#loginTip').next().click();
             }
         });
 
-        // 重置密码输入框回车事件
+        // \u91cd\u7f6e\u5bc6\u7801\u8f93\u5165\u6846\u56de\u8f66\u4e8b\u4ef6
         $("#rpwdConfirmPassword").keyup(function (event) {
             if (event.keyCode === 13) {
                 Verify.resetPwd();
@@ -261,9 +261,9 @@ var Verify = {
         });
     },
     /**
-     * 新手向导初始化
-     * @param {int} currentStep 新手向导步骤，0 为向导完成
-     * @param {int} tagSize 标签数
+     * \u65b0\u624b\u5411\u5bfc\u521d\u59cb\u5316
+     * @param {int} currentStep \u65b0\u624b\u5411\u5bfc\u6b65\u9aa4\uff0c0 \u4e3a\u5411\u5bfc\u5b8c\u6210
+     * @param {int} tagSize \u6807\u7b7e\u6570
      */
     initGuide: function (currentStep, tagSize) {
         if (currentStep === 0) {

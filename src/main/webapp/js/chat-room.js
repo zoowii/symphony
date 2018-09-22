@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 /**
- * @fileoverview 聊天室
+ * @fileoverview \u804a\u5929\u5ba4
  *
  * @author <a href="http://vanessa.b3log.org">Liyuan Li</a>
  * @version 1.2.2.3, Apr 25, 2017
@@ -28,20 +28,20 @@
  */
 var ChatRoom = {
     init: function () {
-        // 聊天窗口高度设置
+        // \u804a\u5929\u7a97\u53e3\u9ad8\u5ea6\u8bbe\u7f6e
         if ($.ua.device.type !== 'mobile') {
             $('.list').height($('.side').height() - $('.chat-room .module:first').outerHeight() - 20);
         } else {
             $('.list').height($(window).height() - 173);
         }
 
-        // 没用登陆就不需要编辑起初始化了 
+        // \u6ca1\u7528\u767b\u9646\u5c31\u4e0d\u9700\u8981\u7f16\u8f91\u8d77\u521d\u59cb\u5316\u4e86 
         if ($('#chatContent').length === 0) {
             return false;
         }
 
         if ($.ua.device.type === 'mobile' && ($.ua.device.vendor === 'Apple' || $.ua.device.vendor === 'Nokia')) {
-            // editor 不支持时，使用 textarea
+            // editor \u4e0d\u652f\u6301\u65f6\uff0c\u4f7f\u7528 textarea
             $('#chatContent').before('<form id="fileUpload" method="POST" enctype="multipart/form-data"><label class="btn">'
                     + Label.uploadLabel + '<input type="file"/></label></form>')
                     .css('margin', 0);
@@ -85,7 +85,7 @@ var ChatRoom = {
             ChatRoom.editor = commentEditor.codemirror;
         }
 
-        // 页面刷新需要保存输入框内容
+        // \u9875\u9762\u5237\u65b0\u9700\u8981\u4fdd\u5b58\u8f93\u5165\u6846\u5185\u5bb9
         if (window.localStorage && window.localStorage.chatRoom) {
             if ("" !== window.localStorage.chatRoom.replace(/(^\s*)|(\s*$)/g, "")) {
                 ChatRoom.editor.setValue(window.localStorage.chatRoom);
@@ -96,7 +96,7 @@ var ChatRoom = {
             return false;
         }
 
-        // at 及本地保存输入框内容
+        // at \u53ca\u672c\u5730\u4fdd\u5b58\u8f93\u5165\u6846\u5185\u5bb9
         ChatRoom.editor.on('changes', function (cm) {
             $("#chatContentTip").removeClass("error succ").html('');
 
@@ -112,7 +112,7 @@ var ChatRoom = {
             }
         });
 
-        // ctrl ＋ enter 快速提交
+        // ctrl \uff0b enter \u5feb\u901f\u63d0\u4ea4
         ChatRoom.editor.on('keypress', function (cm, evt) {
             if (evt.ctrlKey && 10 === evt.charCode) {
                 ChatRoom.send();
@@ -139,7 +139,7 @@ var ChatRoom = {
         });
     },
     /**
-     * 发送聊天内容
+     * \u53d1\u9001\u804a\u5929\u5185\u5bb9
      * @returns {undefined}
      */
     send: function () {
